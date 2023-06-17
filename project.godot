@@ -23,3 +23,7 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

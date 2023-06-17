@@ -7,6 +7,7 @@ class_name DialogueData
 # Options choose
 # Branching
 # If / switch logic
+# Variable read?
 # Phrase syntax (effects, highlight, font, etc)
 
 @export_multiline var dialogue: String

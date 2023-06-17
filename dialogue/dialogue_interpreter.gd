@@ -40,8 +40,8 @@ func _question(line):
   var option_choosen = options[idx]
   return option_choosen
   
-func _ask(text: String, options: Array[String]):
-  pass
+func _ask(text: String, options: Array[String]) -> int:
+  return -1
 
 func _say(_name: String, _text: String):
   pass

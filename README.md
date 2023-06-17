@@ -30,3 +30,12 @@ TODO
 
 ## Interpreter
 TODO
+
+## TODO
+* Multiline phrases
+* + Options choose
+* + Branching
+* If / switch logic
+* Variable read?
+* Phrase syntax (effects, highlight, font, etc)
+* Escape special characters in start of string if it is a phrase

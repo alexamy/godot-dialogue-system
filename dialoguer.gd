@@ -16,8 +16,10 @@ func run():
     var type = line["type"]
     if type == "code":
       await line["expression"].execute([], self)
-    if type == "phrase":
+    elif type == "phrase":
       await _say(line["name"], line["text"])
+    else:
+      printerr("Unknown line type.")
       
 func _say(name: String, text: String):
   nameLabel.text = name

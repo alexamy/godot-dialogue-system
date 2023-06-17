@@ -19,7 +19,8 @@ func parse():
 func _code(line: String):
   var code = line.substr(1)
   var expr = Expression.new()
-  expr.parse(code)  
+  var err = expr.parse(code)  
+  if err != OK: printerr("Cannot parse code.")
   return { 
     "type": "code",
     "expression": expr,

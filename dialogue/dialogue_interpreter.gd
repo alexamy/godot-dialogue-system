@@ -8,9 +8,9 @@ func run():
   for line in dialogue.parse():
     var type = line["type"]
     if type == "code":
-      await line["expression"].execute([], self)
+      _code(line)
     elif type == "phrase":
-      await _say(line["name"], line["text"])
+      _phrase(line)
     else:
       printerr("Unknown line type.")
       
@@ -20,3 +20,8 @@ func _say(_name: String, text: String):
 func Pause(millis: int):
   await get_tree().create_timer(millis / 1000.0).timeout
 
+func _code(line):
+  await line["expression"].execute([], self)
+  
+func _phrase(line):
+  await _say(line["name"], line["text"])

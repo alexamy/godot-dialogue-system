@@ -13,7 +13,8 @@ func run(block: String):
     elif type == "phrase":
       await _phrase(line)
     elif type == "question":
-      await _question(line)
+      var target = await _question(line)
+      return await _goto(target)
     elif type == "goto":
       return await _goto(line)
     else:
@@ -29,7 +30,18 @@ func _goto(line):
   await run(line["block"])
   
 func _question(line):
-  print(line)
+  var text = line["text"]
+  var options = line["options"]
+  var option_texts: Array[String]
+  option_texts.assign(options.map(func(opt): return opt["text"]))
+  var idx = await _ask(text, option_texts)
+  assert(idx is int, "Index is not a number.")
+  assert(idx > 0 and idx < len(options), "Index is out of range: %s." % idx)
+  var option_choosen = options[idx]
+  return option_choosen
+  
+func _ask(text: String, options: Array[String]):
+  pass
 
 func _say(_name: String, _text: String):
   pass

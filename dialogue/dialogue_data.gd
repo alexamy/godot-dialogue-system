@@ -88,7 +88,7 @@ func _question(lines: Array[String], idx: int):
     if offset == 1: assert(is_option, "No options provided for question.")
     if not is_option: offset -= 1; break
     var data = line.substr(2).split(">")
-    options.push_back({ "target": data[0], "option": data[1].strip_edges() })
+    options.push_back({ "block": data[0], "text": data[1].strip_edges() })
     offset += 1
   return [offset, {
     "type": "question",

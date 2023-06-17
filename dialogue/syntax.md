@@ -20,7 +20,7 @@ Text with followed options to choose from.
 
 ### Options (`=<`)
 Options to choose from. Written in form of `=<anchor_name>` and after selecting 
-one of them interpreter will jump to blocks specified by anchor name.
+one of them interpreter will jump to block specified by anchor name.
 
 ### Goto (`=>`)
 Used for jumping to another dialogue block unconditionally.

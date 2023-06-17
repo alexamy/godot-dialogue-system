@@ -23,6 +23,7 @@ func _init(p_dialogue = ""):
 func parse():
   var lines = dialogue.split("\n", false)
   assert(lines[0].begins_with("#"), "Must start with anchor.")
+  
   for line_raw in lines:
     var line = line_raw.strip_edges()
     if line.begins_with("#"):

@@ -9,11 +9,10 @@ extends Node
 @onready var textLabel = get_node(_text) as Label
   
 func _ready():
-  dialogue.to_ast()
   run()
   
 func run():
-  for line in dialogue.ast:
+  for line in dialogue.parse():
     var type = line["type"]
     if type == "code":
       await line["expression"].execute([], self)

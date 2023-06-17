@@ -3,19 +3,20 @@ extends Resource
 class_name DialogueData
 
 @export_multiline var dialogue: String
-var ast = []
 
 func _init(p_dialogue = ""):
   dialogue = p_dialogue
 
-func to_ast():
+func parse():
+  var ast = []
   for line in dialogue.split("\n", false):
     if line.begins_with("#"):
-      ast.push_back(parse_code(line))
+      ast.push_back(_code(line))
     else:
-      ast.push_back(parse_phrase(line))      
+      ast.push_back(_phrase(line))      
+  return ast
 
-func parse_code(line: String):
+func _code(line: String):
   var code = line.substr(1)
   var expr = Expression.new()
   expr.parse(code)  
@@ -24,7 +25,7 @@ func parse_code(line: String):
     "expression": expr,
   }
 
-func parse_phrase(line: String): 
+func _phrase(line: String): 
   var parts = line.split(":", false, 2)
   return { 
     "type": "phrase", 

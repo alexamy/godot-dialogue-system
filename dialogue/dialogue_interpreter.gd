@@ -12,6 +12,8 @@ func run(block: String):
       await _code(line)
     elif type == "phrase":
       await _phrase(line)
+    elif type == "question":
+      await _question(line)
     elif type == "goto":
       return await _goto(line)
     else:
@@ -25,6 +27,9 @@ func _phrase(line):
   
 func _goto(line):
   await run(line["block"])
+  
+func _question(line):
+  print(line)
 
 func _say(_name: String, _text: String):
   pass

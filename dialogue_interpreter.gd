@@ -1,5 +1,7 @@
 extends Node
 
+class_name DialogueInterpreter
+
 @export var dialogue: DialogueData
 
 @export_node_path("Label") var _name
@@ -23,7 +25,7 @@ func run():
       
 func _say(_name: String, text: String):
   nameLabel.text = _name
-  textLabel.text = text 
+  textLabel.text = text
             
 func Pause(millis: int):
   await get_tree().create_timer(millis / 1000.0).timeout

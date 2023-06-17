@@ -2,6 +2,13 @@ extends Resource
 
 class_name DialogueData
 
+# TODO
+# Multiline phrases
+# Options choose
+# Branching
+# If / switch logic
+# Phrases syntax (effects, highlight, font, etc)
+
 @export_multiline var dialogue: String
 
 func _init(p_dialogue = ""):

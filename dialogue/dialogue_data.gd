@@ -31,7 +31,10 @@ func parse():
     elif line.begins_with("$"):
       var code = _code(line)
       current.push_back(code)
-    elif line.begins_with("=?"): pass
+    elif line.begins_with("=?"):
+      var info = _question(lines, idx)
+      idx += info[0]
+      current.push_back(info[1])
     elif line.begins_with("=<"): pass
     elif line.begins_with("=>"):
       var goto = _goto(line)
@@ -74,3 +77,10 @@ func _goto(line: String):
     "type": "goto",
     "block": block,
   }
+
+func _question(lines: Array[String], idx: int):
+  return [0, {
+    "type": "question",
+    "text": "",
+    "options": [""],
+  }]

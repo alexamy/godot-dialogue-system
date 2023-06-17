@@ -14,14 +14,15 @@ func run():
     else:
       printerr("Unknown line type.")
       
-func _say(_name: String, text: String):
-  pass
-            
-func Pause(millis: int):
-  await get_tree().create_timer(millis / 1000.0).timeout
-
 func _code(line):
   await line["expression"].execute([], self)
   
 func _phrase(line):
   await _say(line["name"], line["text"])
+
+func _say(_name: String, _text: String):
+  pass
+  
+# Common helper methods for dialogues
+func Pause(millis: int):
+  await get_tree().create_timer(millis / 1000.0).timeout

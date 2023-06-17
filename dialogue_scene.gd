@@ -9,6 +9,6 @@ extends DialogueInterpreter
 func _ready():
   run()
 
-func _say(_name: String, text: String):
-  nameLabel.text = _name
+func _say(name_: String, text: String):
+  nameLabel.text = name_
   textLabel.text = text

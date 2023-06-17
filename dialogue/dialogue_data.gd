@@ -15,7 +15,7 @@ func parse():
   var lines = dialogue.split("\n", false)
   assert(lines[0].begins_with("#"), "Must start with anchor.")
   var idx = 0
-  while idx < len(lines):
+  while idx < lines.size():
     var line = lines[idx].strip_edges()
     if line.begins_with("#"):
       _anchor(line)
@@ -74,7 +74,7 @@ func _question(lines: Array[String], idx: int):
   var text = lines[idx].substr(2).strip_edges()
   var options = []
   var offset = 1
-  while(idx + offset < len(lines)):
+  while(idx + offset < lines.size()):
     var line = lines[idx + offset]
     var is_option = line.begins_with("=<")
     if offset == 1: assert(is_option, "No options provided for question.")

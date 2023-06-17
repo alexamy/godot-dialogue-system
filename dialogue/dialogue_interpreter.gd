@@ -36,7 +36,7 @@ func _question(line):
   option_texts.assign(options.map(func(opt): return opt["text"]))
   var idx = await _ask(text, option_texts)
   assert(idx is int, "Index is not a number.")
-  assert(idx >= 0 and idx < len(options), "Index is out of range: %s." % idx)
+  assert(idx >= 0 and idx < options.size(), "Index is out of range: %s." % idx)
   var option_choosen = options[idx]
   return option_choosen
 

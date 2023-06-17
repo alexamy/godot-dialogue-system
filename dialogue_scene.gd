@@ -23,8 +23,8 @@ func _ask(text: String, options: Array[String]) -> int:
   text_label.text = ""
   await button_group.pressed
   _hide_buttons()  
-  var pressed = button_group.get_pressed_button().text
-  var idx = options.find(pressed)
+  var pressed = button_group.get_pressed_button()
+  var idx = options.find(pressed.text)
   return idx
   
 func _show_buttons(options: Array[String]):

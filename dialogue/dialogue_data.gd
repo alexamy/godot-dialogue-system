@@ -23,18 +23,21 @@ func _init(p_dialogue = ""):
 func parse():
   var lines = dialogue.split("\n", false)
   assert(lines[0].begins_with("#"), "Must start with anchor.")
-  
-  for line_raw in lines:
-    var line = line_raw.strip_edges()
+  var idx = 0
+  while idx < len(lines):
+    var line = lines[idx].strip_edges()
     if line.begins_with("#"):
       _anchor(line)
     elif line.begins_with("$"):
-      current.push_back(_code(line))
+      var code = _code(line)
+      current.push_back(code)
     elif line.begins_with("=?"): pass
     elif line.begins_with("=<"): pass
     elif line.begins_with("=>"): pass
     else:
-      current.push_back(_phrase(line))      
+      var phrase = _phrase(line)
+      current.push_back(phrase)    
+    idx += 1  
       
   ast[anchor_name] = current
   return ast

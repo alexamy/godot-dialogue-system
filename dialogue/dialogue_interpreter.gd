@@ -39,7 +39,8 @@ func _question(line):
   assert(idx > 0 and idx < len(options), "Index is out of range: %s." % idx)
   var option_choosen = options[idx]
   return option_choosen
-  
+
+# Will be redefined in child classes
 func _ask(text: String, options: Array[String]) -> int:
   return -1
 

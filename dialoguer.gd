@@ -21,8 +21,8 @@ func run():
     else:
       printerr("Unknown line type.")
       
-func _say(name: String, text: String):
-  nameLabel.text = name
+func _say(_name: String, text: String):
+  nameLabel.text = _name
   textLabel.text = text 
             
 func Pause(millis: int):

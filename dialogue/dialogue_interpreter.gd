@@ -5,12 +5,12 @@ class_name DialogueInterpreter
 @export var dialogue: DialogueData
    
 func run():
-  for line in dialogue.parse():
+  for line in dialogue.parse()["start"]:
     var type = line["type"]
     if type == "code":
-      _code(line)
+      await _code(line)
     elif type == "phrase":
-      _phrase(line)
+      await _phrase(line)
     else:
       printerr("Unknown line type.")
       
@@ -24,5 +24,5 @@ func _say(_name: String, _text: String):
   pass
   
 # Common helper methods for dialogues
-func Pause(millis: int):
+func pause(millis: int):
   await get_tree().create_timer(millis / 1000.0).timeout

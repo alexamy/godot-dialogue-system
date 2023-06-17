@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_7lh7q")
-dialogue = "Man: Ha-ha! You are kidnapped now.
-#Pause(3000)
+dialogue = "=start
+Man: Ha-ha! You are kidnapped now.
+#pause(3000)
 Kid: No! You are not my dad!"

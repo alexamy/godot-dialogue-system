@@ -13,7 +13,7 @@ func run():
     elif type == "phrase":
       await _phrase(line)
     else:
-      printerr("Unknown line type.")
+      printerr("Unknown line type: %s." % type)
       
 func _code(line):
   await line["expression"].execute([], self)

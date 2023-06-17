@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_7lh7q")
 dialogue = "# start
+=> fight
 Man: So you are not tell me.
 $ pause(2000)
 Kid: Yes! You are not my dad!

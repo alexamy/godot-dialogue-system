@@ -6,23 +6,19 @@
 script = ExtResource("1_7lh7q")
 dialogue = "# start
 Man: So you are not tell me.
-$ pause(2000)
 Kid: Yes! You are not my dad!
-$ pause(2000)
 =? What will you do?
 =<fight> Start a fight
 =<wait> Sit and wait
 
 # fight
 Kid: So I will destroy you!
-$ pause(1000)
 Man: Oh boy!
 
 # wait
 Man: So what is your name, kid?
-$ pause(1000)
 Kid: *silence*
-$ pause(1000)
+$ pause(2000)
 => start
 
 "

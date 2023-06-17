@@ -12,10 +12,12 @@ extends DialogueInterpreter
 func _ready():
   _hide_buttons()  
   await run("start")
+  print("completed")
 
 func _say(name_t: String, text: String):
   name_label.text = name_t
   text_label.text = text
+  await get_tree().create_timer(1.5).timeout
 
 func _ask(text: String, options: Array[String]) -> int:
   _say(text, "")

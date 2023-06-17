@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxp53n2y72eq8"]
+[gd_scene load_steps=3 format=3 uid="uid://cxp53n2y72eq8"]
 
 [ext_resource type="Script" path="res://Dialoguer.gd" id="1_87wby"]
+[ext_resource type="Resource" uid="uid://ce1xel2m6o52i" path="res://Dialogue1.tres" id="2_kxyq6"]
 
 [node name="Root" type="Node2D"]
 
 [node name="Dialoguer" type="Node" parent="."]
 script = ExtResource("1_87wby")
+dialogue = ExtResource("2_kxyq6")

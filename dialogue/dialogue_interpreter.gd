@@ -15,8 +15,7 @@ func run():
       await _phrase(line)
     elif type == "goto":
       _goto(line)
-      run()
-      return
+      return await run()
     else:
       printerr("Unknown line type: %s." % type)
       

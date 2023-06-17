@@ -6,12 +6,12 @@
 Every line without special symbols in the start consdired as a phrase.
 It has two parts - name before `:` and phrase text afterwards.
 
-### Anchor (`=`)
+### Anchor (`#`)
 Used for defining start of the dialogue block and later switch to it.
-Anchor starts with `=`. Everything after this will be the name of dialogue block.
+Anchor starts with `#`. Everything after this will be the name of dialogue block.
 Ends when there will be another dialogue block or the end of file.
 
-### Expression (`#`)
+### Expression (`$`)
 Used for executing arbitrary code. Will be executed as Godot Expression in context of dialogue interpreter.
 Typically it is a method call.
 

@@ -12,22 +12,19 @@ class_name DialogueData
 
 @export_multiline var dialogue: String
 
+var ast = {}
+var current = []
+var anchor_name = ""
+
 func _init(p_dialogue = ""):
   dialogue = p_dialogue
 
 func parse():
-  var ast = {}
-  var current = []
-  var anchor_name = ""
-  
   var lines = dialogue.split("\n", false)
   assert(lines[0].begins_with("="), "Must start with anchor.")
   for line in lines:
     if line.begins_with("="):
-      if anchor_name != "":
-        ast[anchor_name] = current
-        current = []
-      anchor_name = line.substr(1)
+      _anchor(line)
     elif line.begins_with("#"):
       current.push_back(_code(line))
     else:
@@ -35,6 +32,12 @@ func parse():
       
   ast[anchor_name] = current
   return ast
+  
+func _anchor(line: String):
+  if anchor_name != "":
+    ast[anchor_name] = current
+    current = []
+  anchor_name = line.substr(1)  
 
 func _code(line: String):
   var code = line.substr(1)

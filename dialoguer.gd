@@ -10,19 +10,20 @@ extends Node
   
 func _ready():
   dialogue.to_ast()
-  say()
+  run()
   
-func say():
+func run():
   for line in dialogue.ast:
     var type = line["type"]
     if type == "code":
       await line["expression"].execute([], self)
     if type == "phrase":
-      await Say(line["name"], line["text"])
+      await _say(line["name"], line["text"])
+      
+func _say(name: String, text: String):
+  nameLabel.text = name
+  textLabel.text = text 
             
 func Pause(millis: int):
   await get_tree().create_timer(millis / 1000.0).timeout
 
-func Say(name: String, text: String):
-  nameLabel.text = name
-  textLabel.text = text 

@@ -1,7 +1,13 @@
 # Dialogue system
 
-## Components
+## Quick start
+1. Create `DialogueData` resource and write a dialogue.
+2. Create script, which extends `DialogueInterpreter`, and implement your custom `_ask` and `_say` methods.
+3. Call `run()` method of interpreter with dialogue block key.
 
+Example of dialogue resource is `dialogue1.tres`, and custom interpeter is `dialogue_scene.gd`.
+
+## Syntax
 ### Phrase
 Every line without special symbols in the start consdired as a phrase.
 It has two parts - name before `:` and phrase text afterwards.

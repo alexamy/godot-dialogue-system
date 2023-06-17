@@ -19,7 +19,7 @@ Typically it is a method call.
 Text with followed options to choose from.
 
 ### Options (`=<`)
-Options to choose from. Written in form of `=<anchor_name>` and after selecting 
+Options to choose from. Written in form of `=<anchor_name>` and after selecting
 one of them interpreter will jump to block specified by anchor name.
 
 ### Goto (`=>`)
@@ -32,10 +32,10 @@ TODO
 TODO
 
 ## TODO
-* Multiline phrases
-* + Options choose
-* + Branching
-* If / switch logic
-* Variable read?
-* Phrase syntax (effects, highlight, font, etc)
-* Escape special characters in start of string if it is a phrase
+- [ ] Multiline phrases
+- [x] Options choose
+- [x] Branching
+- [ ] If / switch logic
+- [ ] Variable read?
+- [ ] Phrase syntax (effects, highlight, font, etc)
+- [ ] Escape special characters in start of string if it is a phrase

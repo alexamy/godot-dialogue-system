@@ -8,6 +8,9 @@ dialogue = "=start
 Man: Ha-ha! You are kidnapped now.
 #pause(3000)
 Kid: No! You are not my dad!
+=? What will you do?
+=<fight> Start a fight
+=<wait> Sit and wait
 
 =fight
 Kid: So I will destroy you!
@@ -18,4 +21,5 @@ Man: Oh boy!
 Man: So what is your name, kid?
 #pause(1000)
 Kid: *silence*
-"
+#pause(1000)
+=>start"

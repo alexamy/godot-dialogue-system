@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxp53n2y72eq8"]
 
-[ext_resource type="Script" path="res://dialogue_interpreter.gd" id="1_7nksv"]
+[ext_resource type="Script" path="res://dialogue/dialogue_interpreter.gd" id="1_nu5ny"]
 [ext_resource type="Resource" uid="uid://ce1xel2m6o52i" path="res://dialogue1.tres" id="2_ekxdr"]
 
 [node name="Root" type="Node2D"]
@@ -33,7 +33,7 @@ text = "Text saying Text saying Text saying Text saying Text saying Text saying 
 autowrap_mode = 3
 
 [node name="DialogueInterpreter" type="Node" parent="."]
-script = ExtResource("1_7nksv")
+script = ExtResource("1_nu5ny")
 dialogue = ExtResource("2_ekxdr")
 _name = NodePath("../UI/MarginContainer/VBoxContainer/Name")
 _text = NodePath("../UI/MarginContainer/VBoxContainer/Text")

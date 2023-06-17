@@ -69,7 +69,7 @@ func _phrase(line: String):
   } 
 
 func _goto(line: String):
-  var block = line.substr(1).strip_edges()
+  var block = line.substr(2).strip_edges()
   return { 
     "type": "goto",
     "block": block,

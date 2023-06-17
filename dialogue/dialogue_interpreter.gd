@@ -5,7 +5,8 @@ class_name DialogueInterpreter
 @export var dialogue: DialogueData
    
 func run():
-  for line in dialogue.parse()["start"]:
+  var blocks = dialogue.parse()
+  for line in blocks["start"]:
     var type = line["type"]
     if type == "code":
       await _code(line)

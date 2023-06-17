@@ -7,4 +7,15 @@ script = ExtResource("1_7lh7q")
 dialogue = "=start
 Man: Ha-ha! You are kidnapped now.
 #pause(3000)
-Kid: No! You are not my dad!"
+Kid: No! You are not my dad!
+
+=fight
+Kid: So I will destroy you!
+#pause(1000)
+Man: Oh boy!
+
+=wait
+Man: So what is your name, kid?
+#pause(1000)
+Kid: *silence*
+"

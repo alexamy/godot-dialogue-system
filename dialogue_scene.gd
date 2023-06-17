@@ -7,7 +7,7 @@ extends DialogueInterpreter
 @onready var textLabel = get_node(_text) as Label
 
 func _ready():
-  run()
+  run("start")
 
 func _say(name_: String, text: String):
   nameLabel.text = name_

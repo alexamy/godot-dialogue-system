@@ -11,15 +11,23 @@ func _init(p_dialogue = ""):
 func to_ast():
   for line in dialogue.split("\n", false):
     if line.begins_with("#"):
-      var code = line.substr(1)
-      ast.push_back({ 
-        "type": "code", 
-        "code": code,
-      })
-    else: 
-      var parts = line.split(":", false, 2)
-      ast.push_back({ 
-        "type": "phrase", 
-        "name": parts[0],
-        "text": parts[1].strip_edges(), 
-      })      
+      ast.push_back(parse_code(line))
+    else:
+      ast.push_back(parse_phrase(line))      
+
+func parse_code(line: String):
+  var code = line.substr(1)
+  var expr = Expression.new()
+  expr.parse(code)  
+  return { 
+    "type": "code",
+    "expression": expr,
+  }
+
+func parse_phrase(line: String): 
+  var parts = line.split(":", false, 2)
+  return { 
+    "type": "phrase", 
+    "name": parts[0],
+    "text": parts[1].strip_edges(), 
+  } 

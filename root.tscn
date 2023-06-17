@@ -35,5 +35,5 @@ autowrap_mode = 3
 [node name="Dialoguer" type="Node" parent="."]
 script = ExtResource("1_bfamn")
 dialogue = ExtResource("2_ekxdr")
-_whom = NodePath("../UI/MarginContainer/VBoxContainer/Name")
+_name = NodePath("../UI/MarginContainer/VBoxContainer/Name")
 _text = NodePath("../UI/MarginContainer/VBoxContainer/Text")

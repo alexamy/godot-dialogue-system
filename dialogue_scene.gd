@@ -19,6 +19,8 @@ func _say(name_t: String, text: String):
 
 func _ask(text: String, options: Array[String]) -> int:
   _show_buttons(options)
+  name_label.text = text
+  text_label.text = ""
   await button_group.pressed
   _hide_buttons()  
   var pressed = button_group.get_pressed_button().text

@@ -10,7 +10,7 @@ extends Node
   
 func _ready():
   run()
-  
+ 
 func run():
   for line in dialogue.parse():
     var type = line["type"]

@@ -8,6 +8,7 @@ dialogue = "# start
 Man: So you are not tell me.
 $ pause(2000)
 Kid: Yes! You are not my dad!
+$ pause(2000)
 =? What will you do?
 =<fight> Start a fight
 =<wait> Sit and wait

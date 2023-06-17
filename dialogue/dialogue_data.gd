@@ -27,7 +27,7 @@ func parse():
       idx += info[0]
       current.push_back(info[1])
     elif line.begins_with("=<"):
-      assert(false, "Trying to parse question option without question text.")
+      printerr("Trying to parse question option without question text.")
     elif line.begins_with("=>"):
       var goto = _goto(line)
       current.push_back(goto)

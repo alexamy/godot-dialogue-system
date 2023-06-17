@@ -33,7 +33,9 @@ func parse():
       current.push_back(code)
     elif line.begins_with("=?"): pass
     elif line.begins_with("=<"): pass
-    elif line.begins_with("=>"): pass
+    elif line.begins_with("=>"):
+      var goto = _goto(line)
+      current.push_back(goto)
     else:
       var phrase = _phrase(line)
       current.push_back(phrase)    
@@ -65,3 +67,10 @@ func _phrase(line: String):
     "name": parts[0].strip_edges(),
     "text": parts[1].strip_edges(), 
   } 
+
+func _goto(line: String):
+  var block = line.substr(1).strip_edges()
+  return { 
+    "type": "goto",
+    "block": block,
+  }

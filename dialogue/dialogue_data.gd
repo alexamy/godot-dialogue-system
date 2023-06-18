@@ -95,12 +95,12 @@ func _phrase(lines: Array[String], idx: int):
     
 func _phrase_multiline(lines, idx: int):
   var phrases = []
-  var offset = 1
-  while(idx + offset < lines.size()):
-    var line = lines[idx + offset]
+  var offset = 0
+  while(idx + offset + 1 < lines.size()):
+    var line = lines[idx + offset + 1]
     var is_text = not _is_special_line(line)
-    if offset == 1: assert(is_text, "No text found for multiline phrase.")
-    if not is_text: offset -= 1; break
+    if offset == 0: assert(is_text, "No text found for multiline phrase.")
+    if not is_text: break
     line = _unescape_line(line)
     phrases.push_back(line)
     offset += 1
@@ -117,12 +117,12 @@ func _goto(line: String):
 func _question(lines: Array[String], idx: int):
   var text = lines[idx].substr(2).strip_edges()
   var choices = []
-  var offset = 1
-  while(idx + offset < lines.size()):
-    var line = lines[idx + offset]
+  var offset = 0
+  while(idx + offset + 1 < lines.size()):
+    var line = lines[idx + offset + 1]
     var is_choice = line.begins_with(CHOICE)
-    if offset == 1: assert(is_choice, "No choices provided for question.")
-    if not is_choice: offset -= 1; break
+    if offset == 0: assert(is_choice, "No choices provided for question.")
+    if not is_choice: break
     var data = line.substr(2).split(">")
     choices.push_back({ "block": data[0], "text": data[1].strip_edges() })
     offset += 1

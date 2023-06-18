@@ -1,6 +1,5 @@
 extends GutTest
-  
-# Example test which wont work
+
 class TestPhrase:
   extends GutTest
   

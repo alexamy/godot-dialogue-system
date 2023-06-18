@@ -9,9 +9,7 @@ class Phrase:
     
     set_double_strategy(DOUBLE_STRATEGY.SCRIPT_ONLY)
     var interpreter = double(DialogueInterpreter).new()
-    stub(interpreter, "run_block").to_call_super()
     interpreter.dialogue = dialogue
-    interpreter._ready()
     
     interpreter.run_block("start")
     assert_called(interpreter, '_say', ['John', 'Hey {you}!'])

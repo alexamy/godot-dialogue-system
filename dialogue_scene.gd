@@ -1,10 +1,7 @@
 extends DialogueInterpreter
 
-@export_node_path("Label") var _name_label
-@onready var name_label = get_node(_name_label) as Label
-
-@export_node_path("Label") var _text_label
-@onready var text_label = get_node(_text_label) as Label
+@export var name_label: Label
+@export var text_label: Label
 
 @export var button_group: ButtonGroup
 @onready var buttons = button_group.get_buttons() as Array[BaseButton]

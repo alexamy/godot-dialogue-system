@@ -70,9 +70,9 @@ toggle_mode = true
 button_group = ExtResource("1_30b68")
 text = "3"
 
-[node name="Dialogue" type="Node" parent="."]
+[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
 script = ExtResource("1_sy21l")
-_name_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Name")
-_text_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Text")
+name_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Name")
+text_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Text")
 button_group = ExtResource("1_30b68")
 dialogue = ExtResource("2_ekxdr")

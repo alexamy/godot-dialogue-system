@@ -27,9 +27,18 @@ Typically it is a method call.
 ### Question (`=?`)
 Text with followed options to choose from.
 
-### Choice (`=<`)
-Options to choose from. Written in form of `=<block_name>` and after selecting
-one of them interpreter will jump to block specified by anchor name.
+### Question choice (`=<`)
+Options to choose from. Written in form of `=<block_name> Text` and after selecting
+one of them interpreter will jump to block specified by block name.
+
+### Switch (`$?`)
+Code what will be matched with choices.
+
+### Switch choice (`=<`)
+Options to choose from. Written in form of `=<block_name> code` and after finding first  
+choice which code value is equals switch code value, interpreter will jump to block specified by block name.
+If no choice matches switch code, will proceed to next line without jump.
+If last choice have no code provided, becomes fallback choice, which will always be taken when no choice is matched. 
 
 ### Goto (`=>`)
 Used for jumping to another dialogue block unconditionally.
@@ -62,7 +71,7 @@ Phrases are interpolated along with names, and so goto / question / switch targe
 - [x] Multiline phrases
 - [x] Options choose
 - [x] Branching
-- [ ] If / switch logic
+- [x] If / switch logic
 - [x] Variable interpolation
 - [x] Phrase syntax (effects, highlight, font, etc)
 - [x] Escape special characters in start of string if it is a phrase

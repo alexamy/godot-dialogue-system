@@ -89,7 +89,6 @@ func _phrase(lines: Array[String], idx: int):
       "text": text, 
     }] 
     
-    
 func _phrase_multiline(lines, idx: int):
   var phrases = []
   var offset = 1

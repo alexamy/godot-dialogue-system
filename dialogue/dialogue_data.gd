@@ -9,6 +9,7 @@ const ANCHOR = "#"
 const CODE = "$"
 const QUESTION = "=?"
 const CHOICE = "=<"
+const SWITCH = "$?"
 const GOTO = "=>"
 
 var ast = {}
@@ -37,6 +38,10 @@ func parse():
       current.push_back(info[1])
     elif line.begins_with(CHOICE):
       printerr("Trying to parse question choice without question text.")
+    elif line.begins_with(SWITCH):
+      var info = _switch(lines, idx)
+      idx += info[0]
+      current.push_back(info[1])
     elif line.begins_with(GOTO):
       var goto = _goto(line)
       current.push_back(goto)
@@ -57,6 +62,7 @@ func _is_special_line(line: String):
     or line.begins_with(COMMENT)
     or line.begins_with(CODE)
     or line.begins_with(CHOICE)
+    or line.begins_with(SWITCH)
     or line.begins_with(QUESTION)
     or line.begins_with(GOTO))
   
@@ -131,3 +137,6 @@ func _question(lines: Array[String], idx: int):
     "text": text,
     "choices": choices,
   }]
+
+func _switch(lines: Array[String], idx: int):
+  pass

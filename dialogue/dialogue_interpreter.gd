@@ -24,14 +24,15 @@ func _code(line):
   await _run(line["code"])
 
 func _phrase(line):
-  var text = await _interpolate(line["text"])
-  await _say(line["name"], text)
+  var name_t = _interpolate(line["name"])
+  var text = _interpolate(line["text"])
+  await _say(name_t, text)
   
 func _goto(line):
   await run_block(line["block"])
   
 func _question(line):
-  var text = line["text"]
+  var text = _interpolate(line["text"])
   var choices = line["choices"]
   var choice_texts: Array[String] = []
   choice_texts.assign(choices.map(func(opt): return _interpolate(opt["text"])))

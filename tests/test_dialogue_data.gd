@@ -1,6 +1,25 @@
 extends GutTest
 
-class Test1:
+class TestPhrase:
   extends GutTest
-  func test_assert_true():
-    assert_eq(true, false)
+  
+  func test_oneline():
+    var d = DialogueData.new("#start\nJohn: Hey!")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "phrase", "name": "John", "text": "Hey!" }]
+    )
+
+  func test_special_symbol():
+    var d = DialogueData.new("#start\n\\$John: Hey!")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "phrase", "name": "$John", "text": "Hey!" }]
+    )
+
+  func test_special_symbol_slash():
+    var d = DialogueData.new("#start\n\\\\John: Hey!")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "phrase", "name": "\\John", "text": "Hey!" }]
+    )

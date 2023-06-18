@@ -38,6 +38,8 @@ func parse():
       var goto = _goto(line)
       current.push_back(goto)
     else:
+      if line.begins_with("\\"): 
+        line = line.substr(1)
       var phrase = _phrase(line)
       current.push_back(phrase)    
     idx += 1  

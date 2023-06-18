@@ -11,6 +11,8 @@ Example of dialogue resource is `dialogue1.tres`, and custom interpeter is `dial
 ### Phrase
 Every line without special symbols in the start consdired as a phrase.
 It has two parts - name before `:` and phrase text afterwards.
+If for some weird reason your phrase line must start with special symbol (below) - escape it with '\', i.e. '\$'.
+To start phrase line with '\', use '\\'.
 
 ### Anchor (`#`)
 Used for defining start of the dialogue block. Can be referenced later by other instructions.

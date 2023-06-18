@@ -142,6 +142,7 @@ func _choices(lines, idx: int):
     offset += 1
   return [offset, choices] 
 
+# TODO add fallback case
 func _switch(lines: Array[String], idx: int):
   var text = lines[idx].substr(2).strip_edges()
   var choices = _choices(lines, idx)

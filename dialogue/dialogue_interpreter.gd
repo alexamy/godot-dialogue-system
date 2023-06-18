@@ -15,6 +15,9 @@ func run_block(block: String):
     elif type == "question":
       var choice = await _question(line)
       return await _goto(choice)
+    elif type == "switch":
+      var choice = await _switch(line)
+      if choice: return await _goto(choice)
     elif type == "goto":
       return await _goto(line)
     else:
@@ -41,6 +44,9 @@ func _question(line):
   assert(idx >= 0 and idx < choices.size(), "Index is out of range: %s." % idx)
   var choice_choosen = choices[idx]
   return choice_choosen
+  
+func _switch(line):
+  pass
 
 # Hooks for child classes implementation
 func _ask(_text: String, _choices: Array[String]) -> int:

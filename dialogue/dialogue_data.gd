@@ -145,9 +145,13 @@ func _choices(lines, idx: int):
 # TODO add fallback case
 func _switch(lines: Array[String], idx: int):
   var text = lines[idx].substr(2).strip_edges()
-  var choices = _choices(lines, idx)
-  return [choices[0], {
+  var result = _choices(lines, idx)
+  var offset = result[0]
+  var choices = result[1]
+  var fallback = ""
+  return [offset, {
     "type": "switch",
     "text": text,
-    "choices": choices[1],
+    "fallback": fallback,
+    "choices": choices,
   }]

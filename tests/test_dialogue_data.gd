@@ -87,6 +87,18 @@ class TestSwitch:
         ] }]
     )
     
+  func test_with_fallback():
+    var d = DialogueData.new("#start\n$? state()\n=<block1> 'start'\n=<block2> ")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "switch", 
+         "text": "state()",
+         "fallback": "block2",
+         "choices": [
+          { "block": "block1", "text": "'start'" },
+        ] }]
+    )
+    
   func test_special_chars():
     var d = DialogueData.new("#start\n$? state()\n=<block1> 'st>art'")
     assert_eq_deep(

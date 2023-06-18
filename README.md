@@ -54,18 +54,19 @@ TODO
 
 ## Interpreter hooks
 ### `_say(name, text)`
-Runned when saying phrase. Not implemented in base interpreter.
+Used for saying phrase. Not implemented in base interpreter.
 
 ### `_ask(text, choices)`
-Runned when asking question. Must return index of choosen choice. Not implemented in base interpreter.
+Used for asking question. 
+Must return index of choosen choice. Not implemented in base interpreter.
 
-### `_run(code)`
-Runned when executing code line. Run code as godot expression in context of interpreter by default.
+### `_run_code(code)`
+Used for executing code line. 
+Executes code as awaited godot expression in context of interpreter by default.
 
 ### `_interpolate(text)`
-Interpolate text in curly braces as godot expressions by default.
-Also can by used to implement custom phrase syntax, i.e. effects, word highlighting, font change, etc.
-Phrases are interpolated along with names, and so goto / question / switch targets.
+Used for interpolating text and names in phrases, also goto / question / switch targets.
+Interpolate text in curly braces ("{}") as sync godot expressions by default.
 
 ## TODO
 - [x] Multiline phrases

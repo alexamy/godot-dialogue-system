@@ -25,22 +25,22 @@ func run_block(block: String):
       printerr("Unknown line type: %s." % type)
       
 func _code(line):
-  await _run(line["code"])
+  await _run_code(line["code"])
 
 func _phrase(line):
-  var name_t = await _interpolate(line["name"])
-  var text = await _interpolate(line["text"])
+  var name_t = _interpolate(line["name"])
+  var text = _interpolate(line["text"])
   await _say(name_t, text)
   
 func _goto(line):
-  var target = await _interpolate(line["block"])
+  var target = _interpolate(line["block"])
   await run_block(target)
   
 func _question(line):
-  var text = await _interpolate(line["text"])
+  var text = _interpolate(line["text"])
   var choices = line["choices"]
   var choice_texts: Array[String] = []
-  choice_texts.assign(choices.map(func(opt): return await _interpolate(opt["text"])))
+  choice_texts.assign(choices.map(func(opt): return _interpolate(opt["text"])))
   var idx = await _ask(text, choice_texts)
   assert(idx >= 0 and idx < choices.size(), "Index is out of range: %s." % idx)
   var choice_choosen = choices[idx]
@@ -63,7 +63,7 @@ func _say(_name: String, _text: String):
   pass
   
 # Hooks with default implementation (still may be redefined)
-func _run(code: String):
+func _run_code(code: String):
   var expr = Expression.new()
   var err = expr.parse(code)  
   if err != OK: printerr("Cannot parse code.")
@@ -78,7 +78,7 @@ func _interpolate(text: String):
       mode = "code"
       continue
     elif c == "}":
-      result += str(await _run(code))
+      result += str(_run(code))
       mode = "text"
       code = ""
       continue
@@ -88,6 +88,13 @@ func _interpolate(text: String):
       result += c
   assert(mode == "text", "Cannot end in code mode when interpolating.")
   return result
+  
+# Interpreter helpers
+func _run(code: String):
+  var expr = Expression.new()
+  var err = expr.parse(code)  
+  if err != OK: printerr("Cannot parse code.")
+  return expr.execute([], self)  
   
 # Common helper methods for dialogues
 func pause(millis: int):

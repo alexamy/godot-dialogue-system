@@ -29,6 +29,9 @@ func parse():
       _anchor(line)
     elif line.begins_with(COMMENT):
       pass
+    elif line.begins_with(GOTO):
+      var goto = _goto(line)
+      current.push_back(goto)
     elif line.begins_with(QUESTION):
       var info = _question(lines, idx)
       idx += info[0]
@@ -39,9 +42,6 @@ func parse():
       current.push_back(info[1])
     elif line.begins_with(CHOICE):
       printerr("Trying to parse question choice without parent line.")
-    elif line.begins_with(GOTO):
-      var goto = _goto(line)
-      current.push_back(goto)
     elif line.begins_with(CODE):
       var code = _code(line)
       current.push_back(code)

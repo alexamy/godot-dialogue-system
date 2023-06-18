@@ -38,14 +38,16 @@ func parse():
       var goto = _goto(line)
       current.push_back(goto)
     else:
-      if line.begins_with("\\"): 
-        line = line.substr(1)
+      line = _unescape_line(line)
       var phrase = _phrase(line)
       current.push_back(phrase)    
     idx += 1  
       
   ast[anchor_name] = current
   return ast
+  
+func _unescape_line(line: String):
+  return line.substr(1) if line.begins_with("\\") else line
   
 func _anchor(line: String):
   if anchor_name != "":

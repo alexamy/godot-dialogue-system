@@ -1,5 +1,15 @@
 extends GutTest
 
+class TestComment:
+  extends GutTest
+  
+  func test_skipped():
+    var d = DialogueData.new("#start\n// comment")
+    assert_eq_deep(
+      d.parse()["start"],
+      []
+    )   
+
 class TestPhrase:
   extends GutTest
   

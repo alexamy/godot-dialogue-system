@@ -4,6 +4,7 @@ class_name DialogueData
 
 @export_multiline var dialogue: String
 
+const COMMENT = "//"
 const ANCHOR = "#"
 const CODE = "$"
 const QUESTION = "=?"
@@ -25,6 +26,8 @@ func parse():
     var line = lines[idx].strip_edges()
     if line.begins_with(ANCHOR):
       _anchor(line)
+    elif line.begins_with(COMMENT):
+      pass
     elif line.begins_with(CODE):
       var code = _code(line)
       current.push_back(code)

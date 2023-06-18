@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_7lh7q")
-dialogue = "# start
-// this is a comment
+dialogue = "// this is a comment
+// dialogue block reference
+# start
 Man: So you are not tell me. 
 // code execution
 $ pause(2000)
@@ -19,7 +20,6 @@ So... Lets wait until you speak.
 =<fight> Start a fight
 =<wait> Sit and wait
 
-// dialogue block reference
 # fight
 Kid: So I will destroy you!
 // interpolate any code

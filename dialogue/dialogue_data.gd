@@ -20,7 +20,7 @@ func _init(p_dialogue = ""):
   dialogue = p_dialogue
 
 func parse():
-  var lines = dialogue.split("\n", false)
+  var lines = _pretransform(Array(dialogue.split("\n", false)))
   assert(lines[0].begins_with(ANCHOR), "Must start with anchor.")
   var idx = 0
   while idx < lines.size():
@@ -28,7 +28,7 @@ func parse():
     if line.begins_with(ANCHOR):
       _anchor(line)
     elif line.begins_with(COMMENT):
-      pass
+      printerr("Comments must be filtered out before parsing.")
     elif line.begins_with(GOTO):
       var goto = _goto(line)
       current.push_back(goto)
@@ -53,6 +53,9 @@ func parse():
       
   ast[anchor_name] = current
   return ast
+  
+func _pretransform(lines: Array):
+  return lines.filter(func(l): return not l.begins_with(COMMENT))
   
 func _unescape_line(line: String):
   return line.substr(1) if line.begins_with("\\") else line
@@ -79,7 +82,7 @@ func _code(line: String):
     "code": code,
   }
 
-func _phrase(lines: Array[String], idx: int): 
+func _phrase(lines: Array, idx: int): 
   var line = _unescape_line(lines[idx])
   var parts = line.split(":", false, 2)
   var name = parts[0].strip_edges()
@@ -99,12 +102,11 @@ func _phrase(lines: Array[String], idx: int):
       "text": text, 
     }] 
     
-func _phrase_multiline(lines, idx: int):
+func _phrase_multiline(lines: Array, idx: int):
   var phrases = []
   var offset = 0
   while(idx + offset + 1 < lines.size()):
     var line = lines[idx + offset + 1]
-    if line.begins_with(COMMENT): offset += 1; continue
     var is_text = not _is_special_line(line)
     if offset == 0: assert(is_text, "No text found for multiline phrase.")
     if not is_text: break
@@ -121,7 +123,7 @@ func _goto(line: String):
     "block": block,
   }
 
-func _question(lines: Array[String], idx: int):
+func _question(lines: Array, idx: int):
   var text = lines[idx].substr(2).strip_edges()
   var choices = _choices(lines, idx)
   return [choices[0], {
@@ -130,12 +132,11 @@ func _question(lines: Array[String], idx: int):
     "choices": choices[1],
   }]
   
-func _choices(lines, idx: int):
+func _choices(lines: Array, idx: int):
   var choices = []
   var offset = 0
   while(idx + offset + 1 < lines.size()):
     var line = lines[idx + offset + 1]
-    if line.begins_with(COMMENT): offset += 1; continue
     var is_choice = line.begins_with(CHOICE)
     if offset == 0: assert(is_choice, "No choices provided.")
     if not is_choice: break
@@ -150,7 +151,7 @@ func _choices(lines, idx: int):
   return [offset, choices] 
 
 # TODO add fallback case
-func _switch(lines: Array[String], idx: int):
+func _switch(lines: Array, idx: int):
   var text = lines[idx].substr(2).strip_edges()
   var result = _choices(lines, idx)
   var offset = result[0]

@@ -35,10 +35,10 @@ one of them interpreter will jump to block specified by block name.
 Code what will be matched with choices.
 
 ### Switch choice (`=<`)
-Options to choose from. Written in form of `=<block_name> code` and after finding first  
+Options to match switch value. Written in form of `=<block_name> code` and after finding first  
 choice which code value is equals switch code value, interpreter will jump to block specified by block name.
 If no choice matches switch code, will proceed to next line without jump.
-If last choice have no code provided, becomes fallback choice, which will always be taken when no choice is matched. 
+If last choice have no code provided, it becomes fallback choice, which will always be taken when no choice is matched. 
 
 ### Goto (`=>`)
 Used for jumping to another dialogue block unconditionally.

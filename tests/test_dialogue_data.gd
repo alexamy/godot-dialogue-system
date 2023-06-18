@@ -70,3 +70,25 @@ class TestQuestion:
       [{ "type": "question", "text": "What?",
          "choices": [{ "block": "block1", "text": "H>u>h" }] }]
     )  
+
+class TestSwitch:
+  extends GutTest
+  
+  func test_is_parsed():
+    var d = DialogueData.new("#start\n$? state()\n=<block1> 'start'\n=<block2> 'finish'")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "switch", "text": "state()",
+         "choices": [
+          { "block": "block1", "text": "'start'" },
+          { "block": "block2", "text": "'finish'" }
+        ] }]
+    )
+    
+  func test_special_chars():
+    var d = DialogueData.new("#start\n$? state()\n=<block1> 'st>art'")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "switch", "text": "state()",
+         "choices": [{ "block": "block1", "text": "'st>art'" }] }]
+    )

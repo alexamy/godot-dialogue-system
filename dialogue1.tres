@@ -5,11 +5,13 @@
 [resource]
 script = ExtResource("1_7lh7q")
 dialogue = "# start
+// this is a comment, which will thrown away when run through interpreter
 // simple phrase
 Man: So you are not tell me.
 Kid: Yes! You are not my dad!
+// multiline phrase
 Man:
-Hmm... Hmm...
+Hmm... Hmm...s
 So... Lets wait until you will speak. 
 
 // this is a question with two choices

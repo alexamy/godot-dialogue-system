@@ -34,7 +34,7 @@ one of them interpreter will jump to block specified by anchor name.
 Used for jumping to another dialogue block unconditionally.
 
 ### Comment (`//`)
-One-line comment. Stripped from output.
+Oneline comment. Stripped from output.
 
 ## ADT
 TODO

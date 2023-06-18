@@ -49,6 +49,13 @@ func parse():
 func _unescape_line(line: String):
   return line.substr(1) if line.begins_with("\\") else line
   
+func _is_special_line(line: String):
+  return (line.begins_with(ANCHOR)  
+    or line.begins_with(CODE)
+    or line.begins_with(CHOICE)
+    or line.begins_with(QUESTION)
+    or line.begins_with(GOTO))
+  
 func _anchor(line: String):
   if anchor_name != "":
     ast[anchor_name] = current
@@ -67,12 +74,28 @@ func _phrase(lines: Array[String], idx: int):
   var parts = line.split(":", false, 2)
   var name = parts[0].strip_edges()
   var text = parts[1].strip_edges()
-  if len(text) > 0:
+  var is_oneline = len(text) > 0
+  if is_oneline:
     return [0, { 
       "type": "phrase", 
       "name": name,
       "text": text, 
     }] 
+  else:
+    var phrases = []
+    var offset = 1
+    while(idx + offset < lines.size()):
+      var nline = lines[idx + offset]
+      var is_text = not _is_special_line(nline)
+      if offset == 1: assert(is_text, "No text found for multiline phrase.")
+      if not is_text: offset -= 1; break
+      phrases.push_back(_unescape_line(nline))
+      offset += 1
+    return [offset, { 
+      "type": "phrase", 
+      "name": name,
+      "text": "\n".join(phrases), 
+    }]       
 
 func _goto(line: String):
   var block = line.substr(2).strip_edges()

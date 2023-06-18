@@ -9,6 +9,13 @@ class TestPhrase:
       d.parse()["start"],
       [{ "type": "phrase", "name": "John", "text": "Hey!" }]
     )
+    
+  func test_multiline():
+    var d = DialogueData.new("#start\nJohn: \nAre we gonna dance?")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "phrase", "name": "John", "text": "Hey!\nAre we gonna dance?" }]
+    )    
 
   func test_special_symbol():
     var d = DialogueData.new("#start\n\\$John: Hey!")

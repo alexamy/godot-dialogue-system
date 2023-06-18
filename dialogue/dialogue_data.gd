@@ -38,9 +38,9 @@ func parse():
       var goto = _goto(line)
       current.push_back(goto)
     else:
-      line = _unescape_line(line)
-      var phrase = _phrase(line)
-      current.push_back(phrase)    
+      var info = _phrase(lines, idx)
+      idx += info[0]
+      current.push_back(info[1])
     idx += 1  
       
   ast[anchor_name] = current
@@ -62,13 +62,17 @@ func _code(line: String):
     "code": code,
   }
 
-func _phrase(line: String): 
+func _phrase(lines: Array[String], idx: int): 
+  var line = _unescape_line(lines[idx])
   var parts = line.split(":", false, 2)
-  return { 
-    "type": "phrase", 
-    "name": parts[0].strip_edges(),
-    "text": parts[1].strip_edges(), 
-  } 
+  var name = parts[0].strip_edges()
+  var text = parts[1].strip_edges()
+  if len(text) > 0:
+    return [0, { 
+      "type": "phrase", 
+      "name": name,
+      "text": text, 
+    }] 
 
 func _goto(line: String):
   var block = line.substr(2).strip_edges()

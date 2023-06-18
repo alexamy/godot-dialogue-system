@@ -104,6 +104,7 @@ func _phrase_multiline(lines, idx: int):
   var offset = 0
   while(idx + offset + 1 < lines.size()):
     var line = lines[idx + offset + 1]
+    if line.begins_with(COMMENT): offset += 1; continue
     var is_text = not _is_special_line(line)
     if offset == 0: assert(is_text, "No text found for multiline phrase.")
     if not is_text: break

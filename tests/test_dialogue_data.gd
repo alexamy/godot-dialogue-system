@@ -19,7 +19,14 @@ class TestComment:
           { "block": "block1", "text": "Huh" },
           { "block": "block2", "text": "Meh" }
         ] }]
-    )    
+    )  
+      
+  func test_skipped_in_multiline():
+    var d = DialogueData.new("#start\nJack:\nHuh\n//comment\nMeh")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "phrase", "name": "Jack", "text": "Huh\nMeh" }]
+    )  
 
 class TestPhrase:
   extends GutTest

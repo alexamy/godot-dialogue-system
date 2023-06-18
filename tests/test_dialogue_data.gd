@@ -48,3 +48,17 @@ class TestPhrase:
       d.parse()["start"],
       [{ "type": "phrase", "name": "\\John", "text": "Hey!" }]
     )
+
+class TestQuestion:
+  extends GutTest
+  
+  func test_is_parsed():
+    var d = DialogueData.new("#start\n=? What?\n=<block1> Huh\n=<block2> Meh")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "question", "text": "What?",
+         "choices": [
+          { "block": "block1", "text": "Huh" },
+          { "block": "block2", "text": "Meh" }
+        ] }]
+    )

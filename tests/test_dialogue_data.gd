@@ -62,3 +62,11 @@ class TestQuestion:
           { "block": "block2", "text": "Meh" }
         ] }]
     )
+    
+  func test_special_chars():
+    var d = DialogueData.new("#start\n=? What?\n=<block1> H>u>h")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "question", "text": "What?",
+         "choices": [{ "block": "block1", "text": "H>u>h" }] }]
+    )  

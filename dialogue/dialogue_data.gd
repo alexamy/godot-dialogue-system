@@ -137,7 +137,7 @@ func _choices(lines, idx: int):
     var is_choice = line.begins_with(CHOICE)
     if offset == 0: assert(is_choice, "No choices provided.")
     if not is_choice: break
-    var data = line.substr(2).split(">")
+    var data = line.substr(2).split(">", false, 1)
     choices.push_back({ "block": data[0], "text": data[1].strip_edges() })
     offset += 1
   return [offset, choices] 

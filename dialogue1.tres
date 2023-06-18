@@ -34,4 +34,5 @@ Kid: *silence*
 # switch
 $? where_to_go()
 =<fight> 'fight'
-=<wait> 'wait'"
+=<wait> 'wait'
+=<start>"

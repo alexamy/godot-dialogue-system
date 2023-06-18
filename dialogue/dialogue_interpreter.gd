@@ -7,6 +7,7 @@ class_name DialogueInterpreter
   
 func run_block(block: String):
   for line in blocks[block]:
+    if OS.is_debug_build(): print(line)
     var type = line["type"]
     if type == "code":
       await _code(line)
@@ -17,8 +18,7 @@ func run_block(block: String):
       return await _goto(choice)
     elif type == "switch":
       var choice = await _switch(line)
-      if choice != "": 
-        return await _goto(choice)
+      if choice: return await _goto(choice)
     elif type == "goto":
       return await _goto(line)
     else:
@@ -28,28 +28,29 @@ func _code(line):
   await _run(line["code"])
 
 func _phrase(line):
-  var name_t = _interpolate(line["name"])
-  var text = _interpolate(line["text"])
+  var name_t = await _interpolate(line["name"])
+  var text = await _interpolate(line["text"])
   await _say(name_t, text)
   
 func _goto(line):
-  var target = _interpolate(line["block"])
+  var target = await _interpolate(line["block"])
   await run_block(target)
   
 func _question(line):
-  var text = _interpolate(line["text"])
+  var text = await _interpolate(line["text"])
   var choices = line["choices"]
   var choice_texts: Array[String] = []
-  choice_texts.assign(choices.map(func(opt): return _interpolate(opt["text"])))
+  choice_texts.assign(choices.map(func(opt): return await _interpolate(opt["text"])))
   var idx = await _ask(text, choice_texts)
   assert(idx >= 0 and idx < choices.size(), "Index is out of range: %s." % idx)
   var choice_choosen = choices[idx]
   return choice_choosen
   
 func _switch(line):
-  var target = _run(line["text"])
-  var choices = line["choices"].map(func(opt): return _run(opt["text"]))
-  var idx = choices.find(target)
+  var target = await _run(line["text"])
+  var choices = line["choices"]
+  var options = choices.map(func(opt): return await _run(opt["text"]))
+  var idx = options.find(target)
   var choice = choices[idx] if idx >= 0 else line["fallback"]
   return choice
   
@@ -66,7 +67,7 @@ func _run(code: String):
   var expr = Expression.new()
   var err = expr.parse(code)  
   if err != OK: printerr("Cannot parse code.")
-  return expr.execute([], self)  
+  return await expr.execute([], self)  
   
 func _interpolate(text: String):
   var result = ""
@@ -77,7 +78,7 @@ func _interpolate(text: String):
       mode = "code"
       continue
     elif c == "}":
-      result += str(_run(code))
+      result += str(await _run(code))
       mode = "text"
       code = ""
       continue

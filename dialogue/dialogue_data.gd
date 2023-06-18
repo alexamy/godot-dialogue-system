@@ -153,7 +153,7 @@ func _switch(lines: Array[String], idx: int):
   var result = _choices(lines, idx)
   var offset = result[0]
   var choices = result[1]
-  var fallback = ""
+  var fallback = null
   var last = choices[-1]
   if last.text.is_empty():
     fallback = { "block": last.block }

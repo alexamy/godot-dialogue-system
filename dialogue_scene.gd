@@ -11,6 +11,9 @@ extends DialogueInterpreter
 
 var health = 100
 
+func where_to_go():
+  return 'wait'
+
 func _ready():
   _hide_buttons()  
   await run_block("start")

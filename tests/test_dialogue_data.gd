@@ -78,7 +78,9 @@ class TestSwitch:
     var d = DialogueData.new("#start\n$? state()\n=<block1> 'start'\n=<block2> 'finish'")
     assert_eq_deep(
       d.parse()["start"],
-      [{ "type": "switch", "text": "state()",
+      [{ "type": "switch", 
+         "text": "state()",
+         "fallback": "",
          "choices": [
           { "block": "block1", "text": "'start'" },
           { "block": "block2", "text": "'finish'" }
@@ -88,7 +90,6 @@ class TestSwitch:
   func test_special_chars():
     var d = DialogueData.new("#start\n$? state()\n=<block1> 'st>art'")
     assert_eq_deep(
-      d.parse()["start"],
-      [{ "type": "switch", "text": "state()",
-         "choices": [{ "block": "block1", "text": "'st>art'" }] }]
+      d.parse()["start"][0]["choices"],
+      [{ "block": "block1", "text": "'st>art'" }]
     )

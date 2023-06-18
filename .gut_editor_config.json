@@ -14,7 +14,7 @@
  "hide_orphans": false,
  "ignore_pause": false,
  "include_subdirs": true,
- "inner_class": "TestSwitch",
+ "inner_class": "TestQuestion",
  "junit_xml_file": "",
  "junit_xml_timestamp": false,
  "log_level": 1,

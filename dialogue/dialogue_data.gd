@@ -12,9 +12,9 @@ const CHOICE = "=<"
 const SWITCH = "$?"
 const GOTO = "=>"
 
-var ast = {}
+var adt = {}
 var current = []
-var anchor_name = ""
+var block_name = ""
 
 func _init(p_dialogue = ""):
   dialogue = p_dialogue
@@ -51,8 +51,8 @@ func parse():
       current.push_back(info[1])
     idx += 1  
       
-  ast[anchor_name] = current
-  return ast
+  adt[block_name] = current
+  return adt
   
 func _pretransform(lines: Array):
   return lines.filter(func(l): return not l.begins_with(COMMENT))
@@ -70,10 +70,10 @@ func _is_special_line(line: String):
     or line.begins_with(GOTO))
   
 func _anchor(line: String):
-  if anchor_name != "":
-    ast[anchor_name] = current
+  if block_name != "":
+    adt[block_name] = current
     current = []
-  anchor_name = line.substr(1).strip_edges()  
+  block_name = line.substr(1).strip_edges()  
 
 func _code(line: String):
   var code = line.substr(1).strip_edges()

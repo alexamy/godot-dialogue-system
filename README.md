@@ -56,6 +56,7 @@ Runned when executing code line. Run code as godot expression in context of inte
 ### `_interpolate(text)`
 Interpolate text in curly braces as godot expressions by default.
 Also can by used to implement custom phrase syntax, i.e. effects, word highlighting, font change, etc.
+Phrases are interpolated along with names, and so goto / question / switch targets.
 
 ## TODO
 - [x] Multiline phrases

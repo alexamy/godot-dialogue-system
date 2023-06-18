@@ -127,7 +127,7 @@ func _question(lines: Array[String], idx: int):
   while(idx + offset + 1 < lines.size()):
     var line = lines[idx + offset + 1]
     var is_choice = line.begins_with(CHOICE)
-    if offset == 0: assert(is_choice, "No choices provided for question.")
+    if offset == 0: assert(is_choice, "No choices provided.")
     if not is_choice: break
     var data = line.substr(2).split(">")
     choices.push_back({ "block": data[0], "text": data[1].strip_edges() })

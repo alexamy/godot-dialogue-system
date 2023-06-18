@@ -11,7 +11,7 @@ extends DialogueInterpreter
 
 func _ready():
   _hide_buttons()  
-  await run("start")
+  await run_block("start")
   print("completed")
 
 func _say(name_t: String, text: String):

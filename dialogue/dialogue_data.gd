@@ -57,12 +57,9 @@ func _anchor(line: String):
 
 func _code(line: String):
   var code = line.substr(1).strip_edges()
-  var expr = Expression.new()
-  var err = expr.parse(code)  
-  if err != OK: printerr("Cannot parse code.")
   return { 
     "type": "code",
-    "expression": expr,
+    "code": code,
   }
 
 func _phrase(line: String): 

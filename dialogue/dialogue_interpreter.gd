@@ -5,7 +5,7 @@ class_name DialogueInterpreter
 @export var dialogue: DialogueData
 @onready var blocks = dialogue.parse()
   
-func run(block: String):
+func run_block(block: String):
   for line in blocks[block]:
     var type = line["type"]
     if type == "code":
@@ -21,13 +21,13 @@ func run(block: String):
       printerr("Unknown line type: %s." % type)
       
 func _code(line):
-  await line["expression"].execute([], self)
-  
+  await _run(line["code"])
+
 func _phrase(line):
   await _say(line["name"], line["text"])
   
 func _goto(line):
-  await run(line["block"])
+  await run_block(line["block"])
   
 func _question(line):
   var text = line["text"]
@@ -46,6 +46,12 @@ func _ask(_text: String, _choices: Array[String]) -> int:
 
 func _say(_name: String, _text: String):
   pass
+  
+func _run(code: String):
+  var expr = Expression.new()
+  var err = expr.parse(code)  
+  if err != OK: printerr("Cannot parse code.")
+  await expr.execute([], self)  
   
 # Common helper methods for dialogues
 func pause(millis: int):

@@ -4,6 +4,12 @@ class_name DialogueData
 
 @export_multiline var dialogue: String
 
+const ANCHOR = "#"
+const CODE = "$"
+const QUESTION = "=?"
+const CHOICE = "=<"
+const GOTO = "=>"
+
 var ast = {}
 var current = []
 var anchor_name = ""
@@ -13,22 +19,22 @@ func _init(p_dialogue = ""):
 
 func parse():
   var lines = dialogue.split("\n", false)
-  assert(lines[0].begins_with("#"), "Must start with anchor.")
+  assert(lines[0].begins_with(ANCHOR), "Must start with anchor.")
   var idx = 0
   while idx < lines.size():
     var line = lines[idx].strip_edges()
-    if line.begins_with("#"):
+    if line.begins_with(ANCHOR):
       _anchor(line)
-    elif line.begins_with("$"):
+    elif line.begins_with(CODE):
       var code = _code(line)
       current.push_back(code)
-    elif line.begins_with("=?"):
+    elif line.begins_with(QUESTION):
       var info = _question(lines, idx)
       idx += info[0]
       current.push_back(info[1])
-    elif line.begins_with("=<"):
-      printerr("Trying to parse question option without question text.")
-    elif line.begins_with("=>"):
+    elif line.begins_with(CHOICE):
+      printerr("Trying to parse question choice without question text.")
+    elif line.begins_with(GOTO):
       var goto = _goto(line)
       current.push_back(goto)
     else:
@@ -76,8 +82,8 @@ func _question(lines: Array[String], idx: int):
   var offset = 1
   while(idx + offset < lines.size()):
     var line = lines[idx + offset]
-    var is_option = line.begins_with("=<")
-    if offset == 1: assert(is_option, "No options provided for question.")
+    var is_option = line.begins_with(CHOICE)
+    if offset == 1: assert(is_option, "No choices provided for question.")
     if not is_option: offset -= 1; break
     var data = line.substr(2).split(">")
     options.push_back({ "block": data[0], "text": data[1].strip_edges() })

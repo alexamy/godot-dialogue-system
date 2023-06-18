@@ -47,6 +47,7 @@ func _ask(_text: String, _choices: Array[String]) -> int:
 func _say(_name: String, _text: String):
   pass
   
+# May be redefined in child classes
 func _run(code: String):
   var expr = Expression.new()
   var err = expr.parse(code)  

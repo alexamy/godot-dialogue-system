@@ -20,7 +20,7 @@ Everything after '#' till end of line will be the name of dialogue block.
 Block ends when there will be another dialogue block or the end of file.
 
 ### Expression (`$`)
-Used for executing arbitrary code. Will be executed as Godot Expression in context of dialogue interpreter.
+Used for executing arbitrary code. As default, will be executed as Godot Expression in context of dialogue interpreter.
 Typically it is a method call.
 
 ### Question (`=?`)
@@ -33,11 +33,21 @@ one of them interpreter will jump to block specified by anchor name.
 ### Goto (`=>`)
 Used for jumping to another dialogue block unconditionally.
 
-## AST
+## ADT
 TODO
 
 ## Interpreter
 TODO
+
+## Interpreter hooks
+### `_say(name, text)`
+Runned when saying phrase.
+
+### `_ask(text, choices)`
+Runned when asking question. Must return index of choosen choice.
+
+### `_run(code)`
+Runned when executing code line. Default to Godot Expression in context of interpreter.
 
 ## TODO
 - [ ] Multiline phrases
@@ -46,5 +56,5 @@ TODO
 - [ ] If / switch logic
 - [ ] Variable read?
 - [ ] Phrase syntax (effects, highlight, font, etc)
-- [ ] Escape special characters in start of string if it is a phrase
+- [x] Escape special characters in start of string if it is a phrase
 - [ ] Node editor

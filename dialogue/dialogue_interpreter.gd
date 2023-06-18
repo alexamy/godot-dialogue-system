@@ -24,7 +24,7 @@ func _code(line):
   await _run(line["code"])
 
 func _phrase(line):
-  var text = _interpolate(line["text"])
+  var text = await _interpolate(line["text"])
   await _say(line["name"], text)
   
 func _goto(line):
@@ -53,10 +53,26 @@ func _run(code: String):
   var expr = Expression.new()
   var err = expr.parse(code)  
   if err != OK: printerr("Cannot parse code.")
-  await expr.execute([], self)  
+  return expr.execute([], self)  
   
 func _interpolate(text: String):
-  return text
+  var result = ""
+  var code = ""
+  var mode = "text"
+  for c in text:
+    if c == "{":
+      mode = "code"
+      continue
+    elif c == "}":
+      result += str(_run(code))
+      mode = "text"
+      code = ""
+      continue
+    if mode == "code": 
+      code += c
+    else: 
+      result += c
+  return result
   
 # Common helper methods for dialogues
 func pause(millis: int):

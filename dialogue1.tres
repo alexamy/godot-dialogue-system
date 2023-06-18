@@ -7,7 +7,7 @@ script = ExtResource("1_7lh7q")
 dialogue = "# start
 // this is a comment, which will thrown away when run through interpreter
 // simple phrase
-Man: So you are not tell me.
+Man: So you are not tell me.  But your health is {health}, so it will be easy!
 Kid: Yes! You are not my dad!
 // multiline phrase
 Man:
@@ -22,6 +22,7 @@ So... Lets wait until you speak.
 
 # fight
 Kid: So I will destroy you!
+// interpolate any code expression in curly braces
 Man: Oh boy!
 
 # wait

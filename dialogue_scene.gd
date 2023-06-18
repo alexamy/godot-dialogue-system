@@ -9,6 +9,8 @@ extends DialogueInterpreter
 @export var button_group: ButtonGroup
 @onready var buttons = button_group.get_buttons() as Array[BaseButton]
 
+var health = 100
+
 func _ready():
   _hide_buttons()  
   await run_block("start")

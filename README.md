@@ -13,6 +13,7 @@ Every line without special symbols in the start considered as a phrase.
 It has two parts - name before `:` and phrase text afterwards. Can have multiline text, if has no characters after `:`.
 If for some weird reason your phrase line must start with special symbol (below) - escape it with '\\', i.e. '\\$'.
 To start phrase line with '\\', use '\\\\'.
+Interpolate any code in a phrase between curly braces. It will use the same runner as expression line (`$`).
 
 ### Anchor (`#`)
 Used for defining start of the dialogue block. Can be referenced later by other instructions.

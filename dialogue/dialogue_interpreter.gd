@@ -73,6 +73,7 @@ func _interpolate(text: String):
       code += c
     else: 
       result += c
+  assert(mode == "text", "Cannot end in code mode when interpolating.")
   return result
   
 # Common helper methods for dialogues

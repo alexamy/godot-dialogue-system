@@ -23,9 +23,9 @@ func _ask(text: String, options: Array[String]) -> int:
   _say(text, "")
   _show_buttons(options)
   await button_group.pressed
-  _hide_buttons()  
   var pressed = button_group.get_pressed_button()
   var idx = options.find(pressed.text)
+  _hide_buttons()  
   return idx
   
 func _show_buttons(options: Array[String]):
@@ -37,3 +37,4 @@ func _show_buttons(options: Array[String]):
 func _hide_buttons():
   for button in buttons:
     button.visible = false
+    button.button_pressed = false

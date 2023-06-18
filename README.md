@@ -45,3 +45,4 @@ TODO
 - [ ] Variable read?
 - [ ] Phrase syntax (effects, highlight, font, etc)
 - [ ] Escape special characters in start of string if it is a phrase
+- [ ] Node editor

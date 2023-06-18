@@ -37,7 +37,7 @@ func parse():
       idx += info[0]
       current.push_back(info[1])
     elif line.begins_with(CHOICE):
-      printerr("Trying to parse question choice without question text.")
+      printerr("Trying to parse question choice without parent line.")
     elif line.begins_with(SWITCH):
       var info = _switch(lines, idx)
       idx += info[0]
@@ -122,6 +122,14 @@ func _goto(line: String):
 
 func _question(lines: Array[String], idx: int):
   var text = lines[idx].substr(2).strip_edges()
+  var choices = _choices(lines, idx)
+  return [choices[0], {
+    "type": "question",
+    "text": text,
+    "choices": choices[1],
+  }]
+  
+func _choices(lines, idx: int):
   var choices = []
   var offset = 0
   while(idx + offset + 1 < lines.size()):
@@ -132,11 +140,7 @@ func _question(lines: Array[String], idx: int):
     var data = line.substr(2).split(">")
     choices.push_back({ "block": data[0], "text": data[1].strip_edges() })
     offset += 1
-  return [offset, {
-    "type": "question",
-    "text": text,
-    "choices": choices,
-  }]
+  return [offset, choices] 
 
 func _switch(lines: Array[String], idx: int):
   pass

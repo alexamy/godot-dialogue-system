@@ -54,7 +54,7 @@ Runned when asking question. Must return index of choosen choice. Not implemente
 Runned when executing code line. Run code as godot expression in context of interpreter by default.
 
 ### `_interpolate(text)`
-Runned on displayed text. Interpolate godot expressions in curly braces by default.
+Interpolate text in curly braces as godot expressions by default.
 Also can by used to implement custom phrase syntax, i.e. effects, word highlighting, font change, etc.
 
 ## TODO
@@ -67,3 +67,4 @@ Also can by used to implement custom phrase syntax, i.e. effects, word highlight
 - [x] Escape special characters in start of string if it is a phrase
 - [ ] Node editor
 - [ ] Conditional choice options
+- [x] Expression in text of goto

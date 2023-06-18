@@ -29,7 +29,8 @@ func _phrase(line):
   await _say(name_t, text)
   
 func _goto(line):
-  await run_block(line["block"])
+  var target = _interpolate(line["block"])
+  await run_block(target)
   
 func _question(line):
   var text = _interpolate(line["text"])

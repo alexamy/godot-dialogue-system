@@ -82,20 +82,24 @@ func _phrase(lines: Array[String], idx: int):
       "text": text, 
     }] 
   else:
-    var phrases = []
-    var offset = 1
-    while(idx + offset < lines.size()):
-      var nline = lines[idx + offset]
-      var is_text = not _is_special_line(nline)
-      if offset == 1: assert(is_text, "No text found for multiline phrase.")
-      if not is_text: offset -= 1; break
-      phrases.push_back(_unescape_line(nline))
-      offset += 1
-    return [offset, { 
-      "type": "phrase", 
-      "name": name,
-      "text": "\n".join(phrases), 
-    }]       
+    return _phrase_multiline(lines, idx, name)
+    
+func _phrase_multiline(lines, idx: int, name: String):
+  var phrases = []
+  var offset = 1
+  while(idx + offset < lines.size()):
+    var line = lines[idx + offset]
+    var is_text = not _is_special_line(line)
+    if offset == 1: assert(is_text, "No text found for multiline phrase.")
+    if not is_text: offset -= 1; break
+    line = _unescape_line(line)
+    phrases.push_back(line)
+    offset += 1
+  return [offset, { 
+    "type": "phrase", 
+    "name": name,
+    "text": "\n".join(phrases), 
+  }]         
 
 func _goto(line: String):
   var block = line.substr(2).strip_edges()

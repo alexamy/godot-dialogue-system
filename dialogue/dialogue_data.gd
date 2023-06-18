@@ -138,7 +138,12 @@ func _choices(lines, idx: int):
     if offset == 0: assert(is_choice, "No choices provided.")
     if not is_choice: break
     var data = line.substr(2).split(">", false, 1)
-    choices.push_back({ "block": data[0], "text": data[1].strip_edges() })
+    var block = data[0]
+    var text = data[1].strip_edges() if data.size() == 2 else ""
+    choices.push_back({ 
+      "block": block, 
+      "text": text
+    })
     offset += 1
   return [offset, choices] 
 
@@ -149,6 +154,10 @@ func _switch(lines: Array[String], idx: int):
   var offset = result[0]
   var choices = result[1]
   var fallback = ""
+  var last = choices[-1]
+  if last.text.is_empty():
+    fallback = last.block
+    choices.pop_back()
   return [offset, {
     "type": "switch",
     "text": text,

@@ -134,6 +134,7 @@ func _choices(lines, idx: int):
   var offset = 0
   while(idx + offset + 1 < lines.size()):
     var line = lines[idx + offset + 1]
+    if line.begins_with(COMMENT): offset += 1; continue
     var is_choice = line.begins_with(CHOICE)
     if offset == 0: assert(is_choice, "No choices provided.")
     if not is_choice: break

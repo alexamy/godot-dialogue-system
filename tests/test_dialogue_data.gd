@@ -9,6 +9,17 @@ class TestComment:
       d.parse()["start"],
       []
     )   
+    
+  func test_skipped_in_choices():
+    var d = DialogueData.new("#start\n=? What?\n=<block1> Huh\n//comment\n=<block2> Meh")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "question", "text": "What?",
+         "choices": [
+          { "block": "block1", "text": "Huh" },
+          { "block": "block2", "text": "Meh" }
+        ] }]
+    )    
 
 class TestPhrase:
   extends GutTest

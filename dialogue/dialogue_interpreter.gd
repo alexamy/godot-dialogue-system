@@ -13,8 +13,8 @@ func run(block: String):
     elif type == "phrase":
       await _phrase(line)
     elif type == "question":
-      var target = await _question(line)
-      return await _goto(target)
+      var choice = await _question(line)
+      return await _goto(choice)
     elif type == "goto":
       return await _goto(line)
     else:

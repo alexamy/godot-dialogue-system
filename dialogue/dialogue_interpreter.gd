@@ -41,7 +41,7 @@ func _question(line):
   var choice_choosen = choices[idx]
   return choice_choosen
 
-# Will be redefined in child classes
+# Hooks for child classes implementation
 func _ask(_text: String, _choices: Array[String]) -> int:
   @warning_ignore("redundant_await")
   return await -1
@@ -49,7 +49,7 @@ func _ask(_text: String, _choices: Array[String]) -> int:
 func _say(_name: String, _text: String):
   pass
   
-# May be redefined in child classes
+# Hooks with default implementation (still may be redefined)
 func _run(code: String):
   var expr = Expression.new()
   var err = expr.parse(code)  

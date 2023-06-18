@@ -156,7 +156,7 @@ func _switch(lines: Array[String], idx: int):
   var fallback = ""
   var last = choices[-1]
   if last.text.is_empty():
-    fallback = last.block
+    fallback = { "block": last.block }
     choices.pop_back()
   return [offset, {
     "type": "switch",

@@ -17,7 +17,8 @@ func run_block(block: String):
       return await _goto(choice)
     elif type == "switch":
       var choice = await _switch(line)
-      if choice: return await _goto(choice)
+      if choice != "": 
+        return await _goto(choice)
     elif type == "goto":
       return await _goto(line)
     else:
@@ -46,8 +47,12 @@ func _question(line):
   return choice_choosen
   
 func _switch(line):
-  pass
-
+  var target = _run(line["text"])
+  var choices = line["choices"].map(func(opt): return _run(opt["text"]))
+  var idx = choices.find(target)
+  var choice = choices[idx] if idx >= 0 else line["fallback"]
+  return choice
+  
 # Hooks for child classes implementation
 func _ask(_text: String, _choices: Array[String]) -> int:
   @warning_ignore("redundant_await")

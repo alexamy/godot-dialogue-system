@@ -93,7 +93,7 @@ class TestSwitch:
       d.parse()["start"],
       [{ "type": "switch", 
          "text": "state()",
-         "fallback": "block2",
+         "fallback": { "block": "block2" },
          "choices": [
           { "block": "block1", "text": "'start'" },
         ] }]
@@ -105,7 +105,7 @@ class TestSwitch:
       d.parse()["start"],
       [{ "type": "switch", 
          "text": "state()",
-         "fallback": "block2",
+         "fallback": { "block": "block2" },
          "choices": [
           { "block": "block1", "text": "'start'" },
         ] }]

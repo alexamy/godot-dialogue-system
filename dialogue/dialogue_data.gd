@@ -74,17 +74,23 @@ func _phrase(lines: Array[String], idx: int):
   var parts = line.split(":", false, 2)
   var name = parts[0].strip_edges()
   var text = parts[1].strip_edges()
-  var is_oneline = len(text) > 0
-  if is_oneline:
+  var is_multiline = len(text) == 0
+  if is_multiline:
+    var phrase = _phrase_multiline(lines, idx)
+    return [phrase[0], {
+      "type": "phrase", 
+      "name": name,
+      "text": phrase[1],       
+    }]
+  else:
     return [0, { 
       "type": "phrase", 
       "name": name,
       "text": text, 
     }] 
-  else:
-    return _phrase_multiline(lines, idx, name)
     
-func _phrase_multiline(lines, idx: int, name: String):
+    
+func _phrase_multiline(lines, idx: int):
   var phrases = []
   var offset = 1
   while(idx + offset < lines.size()):
@@ -95,11 +101,8 @@ func _phrase_multiline(lines, idx: int, name: String):
     line = _unescape_line(line)
     phrases.push_back(line)
     offset += 1
-  return [offset, { 
-    "type": "phrase", 
-    "name": name,
-    "text": "\n".join(phrases), 
-  }]         
+  var text = "\n".join(phrases)
+  return [offset, text]         
 
 func _goto(line: String):
   var block = line.substr(2).strip_edges()

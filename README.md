@@ -66,3 +66,4 @@ Also can by used to implement custom phrase syntax, i.e. effects, word highlight
 - [x] Phrase syntax (effects, highlight, font, etc)
 - [x] Escape special characters in start of string if it is a phrase
 - [ ] Node editor
+- [ ] Conditional choice options

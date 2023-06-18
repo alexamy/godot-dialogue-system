@@ -13,9 +13,9 @@ Every line without special symbols in the start consdired as a phrase.
 It has two parts - name before `:` and phrase text afterwards.
 
 ### Anchor (`#`)
-Used for defining start of the dialogue block and later switch to it. 
-Everything after this will be the name of dialogue block.
-Ends when there will be another dialogue block or the end of file.
+Used for defining start of the dialogue block. Can be referenced later by other instructions.
+Everything after '#' till end of line will be the name of dialogue block.
+Block ends when there will be another dialogue block or the end of file.
 
 ### Expression (`$`)
 Used for executing arbitrary code. Will be executed as Godot Expression in context of dialogue interpreter.

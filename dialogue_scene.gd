@@ -19,20 +19,20 @@ func _say(name_t: String, text: String):
   text_label.text = text
   await get_tree().create_timer(1.5).timeout
 
-func _ask(text: String, options: Array[String]) -> int:
+func _ask(text: String, choices: Array[String]) -> int:
   _say(text, "")
-  _show_buttons(options)
+  _show_buttons(choices)
   await button_group.pressed
   var pressed = button_group.get_pressed_button()
-  var idx = options.find(pressed.text)
+  var idx = choices.find(pressed.text)
   _hide_buttons()  
   return idx
   
-func _show_buttons(options: Array[String]):
+func _show_buttons(choices: Array[String]):
   for i in buttons.size():
-    if i == options.size(): return
+    if i == choices.size(): return
     buttons[i].visible = true
-    buttons[i].text = options[i]
+    buttons[i].text = choices[i]
 
 func _hide_buttons():
   for button in buttons:

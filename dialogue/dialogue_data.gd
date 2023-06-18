@@ -78,18 +78,18 @@ func _goto(line: String):
 
 func _question(lines: Array[String], idx: int):
   var text = lines[idx].substr(2).strip_edges()
-  var options = []
+  var choices = []
   var offset = 1
   while(idx + offset < lines.size()):
     var line = lines[idx + offset]
-    var is_option = line.begins_with(CHOICE)
-    if offset == 1: assert(is_option, "No choices provided for question.")
-    if not is_option: offset -= 1; break
+    var is_choice = line.begins_with(CHOICE)
+    if offset == 1: assert(is_choice, "No choices provided for question.")
+    if not is_choice: offset -= 1; break
     var data = line.substr(2).split(">")
-    options.push_back({ "block": data[0], "text": data[1].strip_edges() })
+    choices.push_back({ "block": data[0], "text": data[1].strip_edges() })
     offset += 1
   return [offset, {
     "type": "question",
     "text": text,
-    "options": options,
+    "choices": choices,
   }]

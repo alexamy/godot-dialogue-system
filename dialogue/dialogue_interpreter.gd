@@ -31,17 +31,16 @@ func _goto(line):
   
 func _question(line):
   var text = line["text"]
-  var options = line["options"]
-  var option_texts: Array[String] = []
-  option_texts.assign(options.map(func(opt): return opt["text"]))
-  var idx = await _ask(text, option_texts)
-  assert(idx is int, "Index is not a number.")
-  assert(idx >= 0 and idx < options.size(), "Index is out of range: %s." % idx)
-  var option_choosen = options[idx]
-  return option_choosen
+  var choices = line["choices"]
+  var choice_texts: Array[String] = []
+  choice_texts.assign(choices.map(func(opt): return opt["text"]))
+  var idx = await _ask(text, choice_texts)
+  assert(idx >= 0 and idx < choices.size(), "Index is out of range: %s." % idx)
+  var choice_choosen = choices[idx]
+  return choice_choosen
 
 # Will be redefined in child classes
-func _ask(_text: String, _options: Array[String]) -> int:
+func _ask(_text: String, _choices: Array[String]) -> int:
   @warning_ignore("redundant_await")
   return await -1
 

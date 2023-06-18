@@ -21,7 +21,7 @@ class TestPhrase:
     )
     
   func test_multiline():
-    var d = DialogueData.new("#start\nJohn: \nHey!\nAre we gonna dance?")
+    var d = DialogueData.new("#start\nJohn:\nHey!\nAre we gonna dance?")
     assert_eq_deep(
       d.parse()["start"],
       [{ "type": "phrase", "name": "John", "text": "Hey!\nAre we gonna dance?" }]

@@ -54,6 +54,7 @@ func _unescape_line(line: String):
   
 func _is_special_line(line: String):
   return (line.begins_with(ANCHOR)  
+    or line.begins_with(COMMENT)
     or line.begins_with(CODE)
     or line.begins_with(CHOICE)
     or line.begins_with(QUESTION)
@@ -76,7 +77,7 @@ func _phrase(lines: Array[String], idx: int):
   var line = _unescape_line(lines[idx])
   var parts = line.split(":", false, 2)
   var name = parts[0].strip_edges()
-  var text = parts[1].strip_edges()
+  var text = parts[1].strip_edges() if parts.size() == 2 else ""
   var is_multiline = len(text) == 0
   if is_multiline:
     var phrase = _phrase_multiline(lines, idx)

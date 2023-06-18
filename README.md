@@ -9,8 +9,8 @@ Example of dialogue resource is `dialogue1.tres`, and custom interpeter is `dial
 
 ## Syntax
 ### Phrase
-Every line without special symbols in the start consdired as a phrase.
-It has two parts - name before `:` and phrase text afterwards.
+Every line without special symbols in the start considered as a phrase.
+It has two parts - name before `:` and phrase text afterwards. Can have multiline text, if has no characters after `:`.
 If for some weird reason your phrase line must start with special symbol (below) - escape it with '\', i.e. '\$'.
 To start phrase line with '\', use '\\'.
 
@@ -32,6 +32,9 @@ one of them interpreter will jump to block specified by anchor name.
 
 ### Goto (`=>`)
 Used for jumping to another dialogue block unconditionally.
+
+### Comment (`//`)
+One-line comment. Stripped from output.
 
 ## ADT
 TODO

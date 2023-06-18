@@ -5,8 +5,15 @@
 [resource]
 script = ExtResource("1_7lh7q")
 dialogue = "# start
+// simple phrase
 Man: So you are not tell me.
 Kid: Yes! You are not my dad!
+Man:
+Hmm... Hmm...
+So... Lets wait until you will speak. 
+
+// this is a question with two choices
+// that will go to different dialogue blocks denoted by '#'
 =? What will you do?
 =<fight> Start a fight
 =<wait> Sit and wait
@@ -18,7 +25,9 @@ Man: Oh boy!
 # wait
 Man: So what is your name, kid?
 Kid: *silence*
+// code execution
 $ pause(2000)
+// go to specified dialogue block
 => start
 
 "

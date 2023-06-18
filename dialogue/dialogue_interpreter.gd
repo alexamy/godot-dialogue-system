@@ -24,7 +24,8 @@ func _code(line):
   await _run(line["code"])
 
 func _phrase(line):
-  await _say(line["name"], line["text"])
+  var text = _interpolate(line["text"])
+  await _say(line["name"], text)
   
 func _goto(line):
   await run_block(line["block"])
@@ -33,7 +34,7 @@ func _question(line):
   var text = line["text"]
   var choices = line["choices"]
   var choice_texts: Array[String] = []
-  choice_texts.assign(choices.map(func(opt): return opt["text"]))
+  choice_texts.assign(choices.map(func(opt): return _interpolate(opt["text"])))
   var idx = await _ask(text, choice_texts)
   assert(idx >= 0 and idx < choices.size(), "Index is out of range: %s." % idx)
   var choice_choosen = choices[idx]
@@ -53,6 +54,9 @@ func _run(code: String):
   var err = expr.parse(code)  
   if err != OK: printerr("Cannot parse code.")
   await expr.execute([], self)  
+  
+func _interpolate(text: String):
+  return text
   
 # Common helper methods for dialogues
 func pause(millis: int):

@@ -53,7 +53,7 @@ Runned when asking question. Must return index of choosen choice.
 Runned when executing code line. Default to Godot Expression in context of interpreter.
 
 ## TODO
-- [ ] Multiline phrases
+- [x] Multiline phrases
 - [x] Options choose
 - [x] Branching
 - [ ] If / switch logic

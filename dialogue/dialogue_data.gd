@@ -152,7 +152,6 @@ func _choices(lines: Array, idx: int):
 
 func _switch(lines: Array, idx: int):
   var result = _question(lines, idx)
-  var offset = result[0]
   var switch = result[1]
   assert(switch["choices"].all(func(c): return not c["text"].is_empty()), "Switch choices cannot be empty.")
   switch["type"] = "switch"

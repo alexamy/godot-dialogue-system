@@ -6,7 +6,7 @@
 script = ExtResource("1_7lh7q")
 dialogue = "// this is a comment
 // dialogue block reference
-# starts
+# start
 Man: So you are not tell me. 
 // code execution
 $ pause(2000)

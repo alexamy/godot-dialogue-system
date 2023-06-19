@@ -81,5 +81,5 @@ Interpolate text in curly braces ("{}") as sync godot expressions by default.
 - [x] Phrase syntax (effects, highlight, font, etc)
 - [x] Escape special characters in start of string if it is a phrase
 - [ ] Node editor
-- [ ] Conditional choice options
+- [x] Conditional choice options
 - [x] Expression in text of goto

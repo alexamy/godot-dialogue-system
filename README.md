@@ -29,7 +29,9 @@ Text with followed options to choose from.
 
 ### Question choice (`=<`)
 Options to choose from. Written in form of `=<block_name> Text` and after selecting
-one of them interpreter will jump to block specified by block name. 
+one of them interpreter will jump to block specified by block name.
+Can have visibility condition in form of `=<block_name>code> Text`. 
+If all choices are not visible, question block is skipped.
 If no choice is choosen, will proceed to next line without jump.
 
 ### Switch (`$?`)
@@ -38,6 +40,8 @@ Code what will be matched with choices.
 ### Switch choice (`=<`)
 Options to match switch value. Written in form of `=<block_name> code` and after finding first  
 choice which code value is equals switch code value, interpreter will jump to block specified by block name.
+Can have guard condition in form of `=<block_name>guard_code> code`. 
+If all choices are excluded, switch block is skipped.
 If no choice matches switch code, will proceed to next line without jump.
 
 ### Goto (`=>`)

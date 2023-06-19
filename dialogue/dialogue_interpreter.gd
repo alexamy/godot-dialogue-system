@@ -42,7 +42,10 @@ func _question(line):
   var choice_texts: Array[String] = []
   for choice in choices:
     var ctext = _interpolate(choice["text"])
+    var cond = choice["cond"]
+    if cond and not _run(cond): continue
     choice_texts.push_back(ctext)
+  if choice_texts.size() == 0: return
   var idx = await _ask(text, choice_texts)
   assert(idx >= -1 and idx < choices.size(), "Index is out of range: %s." % idx)
   if idx >= 0: return choices[idx] 
@@ -53,7 +56,10 @@ func _switch(line):
   var options: Array[String] = []
   for choice in choices:
     var ctext = _run(choice["text"])
+    var cond = choice["cond"]
+    if cond and not _run(cond): continue
     options.push_back(ctext)
+  if options.size() == 0: return
   var idx = options.find(target)
   if idx >= 0: return choices[idx]
   

@@ -65,7 +65,7 @@ func _say(_name: String, _text: String):
 func _run_code(code: String):
   var expr = Expression.new()
   var err = expr.parse(code)  
-  if err != OK: printerr("Cannot parse code.")
+  if err != OK: printerr("Cannot parse code: %s." % code)
   return await expr.execute([], self)  
   
 func _interpolate(text: String):

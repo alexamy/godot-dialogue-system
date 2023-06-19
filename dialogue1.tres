@@ -6,7 +6,7 @@
 script = ExtResource("1_7lh7q")
 dialogue = "// this is a comment
 // dialogue block reference
-# start
+# starts
 Man: So you are not tell me. 
 // code execution
 $ pause(2000)
@@ -34,5 +34,4 @@ Kid: *silence*
 # switch
 $? where_to_go()
 =<fight> 'fight'
-=<wait> 'wait'
-=<start>"
+=<wait> 'wait'"

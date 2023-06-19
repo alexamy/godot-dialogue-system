@@ -143,9 +143,11 @@ func _choices(lines: Array, idx: int):
     var data = line.substr(2).split(">", false, 1)
     var block = data[0]
     var text = data[1].strip_edges() if data.size() == 2 else ""
+    var cond = null
     choices.push_back({ 
       "block": block, 
-      "text": text
+      "text": text,
+      "cond": cond,
     })
     offset += 1
   return [offset, choices] 

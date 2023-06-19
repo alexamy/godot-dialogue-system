@@ -16,8 +16,8 @@ class TestComment:
       d.parse()["start"],
       [{ "type": "question", "text": "What?",
          "choices": [
-          { "block": "block1", "text": "Huh" },
-          { "block": "block2", "text": "Meh" }
+          { "block": "block1", "text": "Huh", "cond": null },
+          { "block": "block2", "text": "Meh", "cond": null }
         ] }]
     )  
       
@@ -76,8 +76,19 @@ class TestQuestion:
       d.parse()["start"],
       [{ "type": "question", "text": "What?",
          "choices": [
-          { "block": "block1", "text": "Huh" },
-          { "block": "block2", "text": "Meh" }
+          { "block": "block1", "text": "Huh", "cond": null },
+          { "block": "block2", "text": "Meh", "cond": null }
+        ] }]
+    )
+    
+  func test_condition():
+    var d = DialogueData.new("#start\n=? What?\n=<block1>is_available()> Huh\n=<block2> Meh")
+    assert_eq_deep(
+      d.parse()["start"],
+      [{ "type": "question", "text": "What?",
+         "choices": [
+          { "block": "block1", "text": "Huh", "cond": "is_available()" },
+          { "block": "block2", "text": "Meh", "cond": null }
         ] }]
     )
     
@@ -86,7 +97,7 @@ class TestQuestion:
     assert_eq_deep(
       d.parse()["start"],
       [{ "type": "question", "text": "What?",
-         "choices": [{ "block": "block1", "text": "H>u>h" }] }]
+         "choices": [{ "block": "block1", "text": "H>u>h", "cond": null }] }]
     )  
 
 class TestSwitch:
@@ -99,8 +110,8 @@ class TestSwitch:
       [{ "type": "switch", 
          "text": "state()",
          "choices": [
-          { "block": "block1", "text": "'start'" },
-          { "block": "block2", "text": "'finish'" }
+          { "block": "block1", "text": "'start'", "cond": null },
+          { "block": "block2", "text": "'finish'", "cond": null }
         ] }]
     )
     
@@ -114,5 +125,5 @@ class TestSwitch:
     var d = DialogueData.new("#start\n$? state()\n=<block1> 'st>art'")
     assert_eq_deep(
       d.parse()["start"][0]["choices"],
-      [{ "block": "block1", "text": "'st>art'" }]
+      [{ "block": "block1", "text": "'st>art'", "cond": null }]
     )

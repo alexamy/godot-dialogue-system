@@ -15,7 +15,7 @@ func run_block(block: String):
       await _phrase(line)
     elif type == "question":
       var choice = await _question(line)
-      return await _goto(choice)
+      if choice: return await _goto(choice)
     elif type == "switch":
       var choice = await _switch(line)
       if choice: return await _goto(choice)
@@ -42,9 +42,8 @@ func _question(line):
   var choice_texts: Array[String] = []
   choice_texts.assign(choices.map(func(opt): return _interpolate(opt["text"])))
   var idx = await _ask(text, choice_texts)
-  assert(idx >= 0 and idx < choices.size(), "Index is out of range: %s." % idx)
-  var choice_choosen = choices[idx]
-  return choice_choosen
+  assert(idx >= -1 and idx < choices.size(), "Index is out of range: %s." % idx)
+  if idx >= 0: return choices[idx] 
   
 func _switch(line):
   var target = await _run(line["text"])
@@ -56,7 +55,7 @@ func _switch(line):
 # Hooks for child classes implementation
 func _ask(_text: String, _choices: Array[String]) -> int:
   @warning_ignore("redundant_await")
-  return await -1
+  return await -2
 
 func _say(_name: String, _text: String):
   pass

@@ -38,7 +38,6 @@ Code what will be matched with choices.
 Options to match switch value. Written in form of `=<block_name> code` and after finding first  
 choice which code value is equals switch code value, interpreter will jump to block specified by block name.
 If no choice matches switch code, will proceed to next line without jump.
-If last choice have no code provided, it becomes fallback choice, which will always be taken when no choice is matched. 
 
 ### Goto (`=>`)
 Used for jumping to another dialogue block unconditionally.
@@ -57,8 +56,8 @@ TODO
 Used for saying phrase. Not implemented in base interpreter.
 
 ### `_ask(text, choices)`
-Used for asking question. 
-Must return index of choosen choice. Not implemented in base interpreter.
+Used for asking question. Must return index of choosen choice. 
+Can return -1 if no choice is choosen. Not implemented in base interpreter.
 
 ### `_run_code(code)`
 Used for executing code line. 

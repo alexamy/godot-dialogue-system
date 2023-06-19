@@ -51,8 +51,7 @@ func _switch(line):
   var choices = line["choices"]
   var options = choices.map(func(opt): return await _run(opt["text"]))
   var idx = options.find(target)
-  var choice = choices[idx] if idx >= 0 else line["fallback"]
-  return choice
+  if idx >= 0: return choices[idx]
   
 # Hooks for child classes implementation
 func _ask(_text: String, _choices: Array[String]) -> int:

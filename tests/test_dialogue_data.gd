@@ -98,22 +98,21 @@ class TestSwitch:
       d.parse()["start"],
       [{ "type": "switch", 
          "text": "state()",
-         "fallback": null,
          "choices": [
           { "block": "block1", "text": "'start'" },
           { "block": "block2", "text": "'finish'" }
         ] }]
     )
     
-  func test_with_fallback():
+  func test_with_spaces():
     var d = DialogueData.new("#start\n$? state()\n=<block1> 'start'\n=<block2> ")
     assert_eq_deep(
       d.parse()["start"],
       [{ "type": "switch", 
          "text": "state()",
-         "fallback": { "block": "block2" },
          "choices": [
           { "block": "block1", "text": "'start'" },
+          { "block": "block2", "text": "" },
         ] }]
     )
     
@@ -123,9 +122,9 @@ class TestSwitch:
       d.parse()["start"],
       [{ "type": "switch", 
          "text": "state()",
-         "fallback": { "block": "block2" },
          "choices": [
           { "block": "block1", "text": "'start'" },
+          { "block": "block2", "text": "" },
         ] }]
     )
     

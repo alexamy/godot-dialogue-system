@@ -150,20 +150,7 @@ func _choices(lines: Array, idx: int):
     offset += 1
   return [offset, choices] 
 
-# TODO add fallback case
 func _switch(lines: Array, idx: int):
-  var text = lines[idx].substr(2).strip_edges()
-  var result = _choices(lines, idx)
-  var offset = result[0]
-  var choices = result[1]
-  var fallback = null
-  var last = choices[-1]
-  if last.text.is_empty():
-    fallback = { "block": last.block }
-    choices.pop_back()
-  return [offset, {
-    "type": "switch",
-    "text": text,
-    "fallback": fallback,
-    "choices": choices,
-  }]
+  var result = _question(lines, idx)
+  result[1]["type"] = "switch"
+  return result

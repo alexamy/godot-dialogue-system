@@ -29,7 +29,8 @@ Text with followed options to choose from.
 
 ### Question choice (`=<`)
 Options to choose from. Written in form of `=<block_name> Text` and after selecting
-one of them interpreter will jump to block specified by block name.
+one of them interpreter will jump to block specified by block name. 
+If no choice is choosen, will proceed to next line without jump.
 
 ### Switch (`$?`)
 Code what will be matched with choices.

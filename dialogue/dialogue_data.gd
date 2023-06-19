@@ -140,10 +140,10 @@ func _choices(lines: Array, idx: int):
     var is_choice = line.begins_with(CHOICE)
     if offset == 0: assert(is_choice, "No choices provided.")
     if not is_choice: break
-    var data = line.substr(2).split(">", false, 1)
+    var data = line.substr(2).split(">", false, 2)
     var block = data[0]
-    var text = data[1].strip_edges() if data.size() == 2 else ""
-    var cond = null
+    var text = data[-1].strip_edges() if data.size() > 1 else ""
+    var cond = data[1].strip_edges() if data.size() == 3 else null
     choices.push_back({ 
       "block": block, 
       "text": text,
@@ -155,6 +155,7 @@ func _choices(lines: Array, idx: int):
 func _switch(lines: Array, idx: int):
   var result = _question(lines, idx)
   var switch = result[1]
+  print(switch)
   assert(switch["choices"].all(func(c): return not c["text"].is_empty()), "Switch choices cannot be empty.")
   switch["type"] = "switch"
   return result

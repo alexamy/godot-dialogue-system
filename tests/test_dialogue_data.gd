@@ -97,7 +97,7 @@ class TestQuestion:
     assert_eq_deep(
       d.parse()["start"],
       [{ "type": "question", "text": "What?",
-         "choices": [{ "block": "block1", "text": "H>u>h", "cond": null }] }]
+         "choices": [{ "block": "block1", "text": "u>h", "cond": "H" }] }]
     )  
 
 class TestSwitch:
@@ -125,5 +125,5 @@ class TestSwitch:
     var d = DialogueData.new("#start\n$? state()\n=<block1> 'st>art'")
     assert_eq_deep(
       d.parse()["start"][0]["choices"],
-      [{ "block": "block1", "text": "'st>art'", "cond": null }]
+      [{ "block": "block1", "text": "art'", "cond": "'st" }]
     )

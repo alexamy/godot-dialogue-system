@@ -40,7 +40,9 @@ func _question(line):
   var text = _interpolate(line["text"])
   var choices = line["choices"]
   var choice_texts: Array[String] = []
-  choice_texts.assign(choices.map(func(opt): return _interpolate(opt["text"])))
+  for choice in choices:
+    var ctext = _interpolate(choice["text"])
+    choice_texts.push_back(ctext)
   var idx = await _ask(text, choice_texts)
   assert(idx >= -1 and idx < choices.size(), "Index is out of range: %s." % idx)
   if idx >= 0: return choices[idx] 
@@ -48,7 +50,10 @@ func _question(line):
 func _switch(line):
   var target = await _run(line["text"])
   var choices = line["choices"]
-  var options = choices.map(func(opt): return await _run(opt["text"]))
+  var options: Array[String] = []
+  for choice in choices:
+    var ctext = _run(choice["text"])
+    options.push_back(ctext)
   var idx = options.find(target)
   if idx >= 0: return choices[idx]
   

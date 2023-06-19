@@ -1,5 +1,7 @@
 # Dialogue system
 
+⚠️ In alpha stage and not very well tested. Expect bugs and breaking api changes.
+
 ## Quick start
 1. Create `DialogueData` resource and write a dialogue.
 2. Create script, which extends `DialogueInterpreter`, and implement your custom `_ask` and `_say` methods.
@@ -30,7 +32,7 @@ Text with followed options to choose from.
 ### Question choice (`=<`)
 Options to choose from. Written in form of `=<block_name> Text` and after selecting
 one of them interpreter will jump to block specified by block name.
-Can have visibility condition in form of `=<block_name>code> Text`. 
+Can have visibility condition in form of `=<block_name>code> Text`.
 If all choices are not visible, question block is skipped.
 If no choice is choosen, will proceed to next line without jump.
 
@@ -38,9 +40,9 @@ If no choice is choosen, will proceed to next line without jump.
 Code what will be matched with choices.
 
 ### Switch choice (`=<`)
-Options to match switch value. Written in form of `=<block_name> code` and after finding first  
+Options to match switch value. Written in form of `=<block_name> code` and after finding first
 choice which code value is equals switch code value, interpreter will jump to block specified by block name.
-Can have guard condition in form of `=<block_name>guard_code> code`. 
+Can have guard condition in form of `=<block_name>guard_code> code`.
 If all choices are excluded, switch block is skipped.
 If no choice matches switch code, will proceed to next line without jump.
 
@@ -61,11 +63,11 @@ TODO
 Used for saying phrase. Not implemented in base interpreter.
 
 ### `_ask(text, choices)`
-Used for asking question. Must return index of choosen choice. 
+Used for asking question. Must return index of choosen choice.
 Can return -1 if no choice is choosen. Not implemented in base interpreter.
 
 ### `_run_code(code)`
-Used for executing code line. 
+Used for executing code line.
 Executes code as awaited godot expression in context of interpreter by default.
 
 ### `_interpolate(text)`

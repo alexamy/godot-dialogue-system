@@ -1,6 +1,6 @@
 # Dialogue system
 
-⚠️ In alpha stage and not very well tested. Expect bugs and breaking api changes.
+⚠️ In alpha stage and isn't tested very well. Expect **a lot** of bugs and breaking api changes.
 
 ## Quick start
 1. Create `DialogueData` resource and write a dialogue.

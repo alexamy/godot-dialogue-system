@@ -9,3 +9,6 @@ func _ready():
 
 func _on_resize_request(new_minsize):
   size = new_minsize
+
+func as_object():
+  return null

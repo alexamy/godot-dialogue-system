@@ -35,8 +35,8 @@ position_offset = Vector2(101, 155)
 
 [node name="NodePhrase" parent="PanelContainer/GraphEdit" instance=ExtResource("3_h0g4i")]
 layout_mode = 0
-offset_left = 466.0
-offset_top = 166.0
-offset_right = 745.0
-offset_bottom = 345.0
-position_offset = Vector2(466, 166)
+offset_left = 434.0
+offset_top = 147.0
+offset_right = 713.0
+offset_bottom = 326.0
+position_offset = Vector2(434, 147)

@@ -20,4 +20,5 @@ slot/0/draw_stylebox = true
 script = ExtResource("1_ur670")
 
 [node name="Name" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2

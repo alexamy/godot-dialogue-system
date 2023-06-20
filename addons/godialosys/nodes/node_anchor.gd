@@ -1,3 +1,5 @@
+@tool
+
 extends DialogueBaseNode
 
 class_name DialogueAnchorNode

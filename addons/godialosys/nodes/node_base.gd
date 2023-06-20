@@ -1,3 +1,5 @@
+@tool
+
 extends GraphNode
 
 class_name DialogueBaseNode

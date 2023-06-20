@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckmvtqqc7brlc"]
+[gd_scene load_steps=4 format=3 uid="uid://ckmvtqqc7brlc"]
 
 [ext_resource type="Script" path="res://addons/godialosys/dialogue_editor.gd" id="1_p3bld"]
 [ext_resource type="PackedScene" uid="uid://ylp5dl2ihulh" path="res://addons/godialosys/nodes/node_anchor.tscn" id="2_oc4yh"]
+[ext_resource type="PackedScene" uid="uid://ck7y0ws4s1fkd" path="res://addons/godialosys/nodes/node_phrase.tscn" id="3_h0g4i"]
 
 [node name="Godialosys" type="Control"]
 custom_minimum_size = Vector2(100, 100)
@@ -26,8 +27,16 @@ layout_mode = 2
 
 [node name="NodeAnchor" parent="PanelContainer/GraphEdit" instance=ExtResource("2_oc4yh")]
 layout_mode = 0
-offset_left = 93.0
-offset_top = 142.0
-offset_right = 326.0
-offset_bottom = 227.0
-position_offset = Vector2(93, 142)
+offset_left = 101.0
+offset_top = 155.0
+offset_right = 334.0
+offset_bottom = 240.0
+position_offset = Vector2(101, 155)
+
+[node name="NodePhrase" parent="PanelContainer/GraphEdit" instance=ExtResource("3_h0g4i")]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 166.0
+offset_right = 745.0
+offset_bottom = 345.0
+position_offset = Vector2(466, 166)

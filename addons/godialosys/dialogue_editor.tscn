@@ -25,12 +25,12 @@ layout_mode = 2
 
 [node name="GraphNode" type="GraphNode" parent="PanelContainer/GraphEdit"]
 layout_mode = 0
-offset_left = 273.0
-offset_top = 271.0
-offset_right = 520.0
-offset_bottom = 351.0
+offset_left = 217.0
+offset_top = 258.0
+offset_right = 464.0
+offset_bottom = 338.0
 mouse_filter = 1
-position_offset = Vector2(273, 271)
+position_offset = Vector2(217, 258)
 slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)

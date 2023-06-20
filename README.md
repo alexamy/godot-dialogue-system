@@ -74,14 +74,19 @@ Executes code as awaited godot expression in context of interpreter by default.
 Used for interpolating text and names in phrases, also goto / question / switch targets.
 Interpolate text in curly braces ("{}") as sync godot expressions by default.
 
-## TODO
-- [x] Multiline phrases
-- [x] Options choose
-- [x] Branching
-- [x] If / switch logic
-- [x] Variable interpolation
-- [x] Phrase syntax (effects, highlight, font, etc)
-- [x] Escape special characters in start of string if it is a phrase
-- [ ] Node editor
-- [x] Conditional choice options
-- [x] Expression in text of goto
+## Node Editor
+Blocks:
+- [ ] Anchor
+Name. Cannot be connected to anchor. N->1.
+- [ ] Phrase
+Name + Text. Can have multiple rows. 1->1.
+- [ ] Expressions
+Have code. Can be on multiple lines (each line is an expression). 1->1.
+- [ ] Question
+Text + Multiple Choice + Condition (optional).
+1->N+1 (one is the default if no matches / all conditions is false).
+Output only to Anchor, expect the default one.
+- [ ] Switch
+Same as question, but has Expression instead of text choice.
+- [ ] Goto
+1->1. Output only to Anchor.

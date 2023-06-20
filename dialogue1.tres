@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://ce1xel2m6o52i"]
+[gd_resource type="Resource" script_class="DialogueTextData" load_steps=2 format=3 uid="uid://ce1xel2m6o52i"]
 
-[ext_resource type="Script" path="res://addons/godialosys/dialogue_data.gd" id="1_7lh7q"]
+[ext_resource type="Script" path="res://addons/godialosys/dialogue_text_data.gd" id="1_g1uhr"]
 
 [resource]
-script = ExtResource("1_7lh7q")
+script = ExtResource("1_g1uhr")
 dialogue = "// this is a comment
 // dialogue block reference
 # start

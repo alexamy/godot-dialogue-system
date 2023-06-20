@@ -90,3 +90,11 @@ Output only to Anchor, expect the default one.
 Same as question, but has Expression instead of text choice.
 - [ ] Goto
 1->1. Output only to Anchor.
+
+  Out	In
+Anchor	0	1
+Phrase	0	0
+Expression	0	0
+Question	1	0
+Question fallback	0	0
+Goto	1	0

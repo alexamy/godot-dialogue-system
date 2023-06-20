@@ -24,19 +24,22 @@ grow_vertical = 2
 
 [node name="GraphEdit" type="GraphEdit" parent="PanelContainer"]
 layout_mode = 2
-
-[node name="NodeAnchor" parent="PanelContainer/GraphEdit" instance=ExtResource("2_oc4yh")]
-layout_mode = 0
-offset_left = 101.0
-offset_top = 155.0
-offset_right = 334.0
-offset_bottom = 240.0
-position_offset = Vector2(101, 155)
+script = ExtResource("1_p3bld")
 
 [node name="NodePhrase" parent="PanelContainer/GraphEdit" instance=ExtResource("3_h0g4i")]
 layout_mode = 0
-offset_left = 434.0
-offset_top = 147.0
-offset_right = 713.0
-offset_bottom = 326.0
-position_offset = Vector2(434, 147)
+offset_left = 209.661
+offset_top = 362.201
+offset_right = 488.661
+offset_bottom = 541.201
+position_offset = Vector2(209.661, 362.201)
+
+[node name="NodeAnchor" parent="PanelContainer/GraphEdit" instance=ExtResource("2_oc4yh")]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 198.0
+offset_right = 445.0
+offset_bottom = 283.0
+position_offset = Vector2(212, 198)
+
+[connection signal="connection_request" from="PanelContainer/GraphEdit" to="." method="_on_graph_edit_connection_request"]

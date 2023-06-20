@@ -1,12 +1,13 @@
 @tool
 extends EditorPlugin
 
+var dock: Control 
 
 func _enter_tree():
-  # Initialization of the plugin goes here.
-  pass
+  dock = preload("res://addons/godialosys/godialosys_editor.tscn").instantiate()
+  add_control_to_bottom_panel(dock, "Godialosys")
 
 
 func _exit_tree():
-  # Clean-up of the plugin goes here.
-  pass
+  remove_control_from_bottom_panel(dock)
+  dock.queue_free()

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://ylp5dl2ihulh"]
+
+[ext_resource type="Script" path="res://addons/godialosys/nodes/node_anchor.gd" id="1_ur670"]
+
+[node name="NodeAnchor" type="GraphNode"]
+offset_right = 233.0
+offset_bottom = 85.0
+mouse_filter = 1
+title = "Anchor"
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_ur670")
+
+[node name="Name" type="LineEdit" parent="."]
+layout_mode = 2

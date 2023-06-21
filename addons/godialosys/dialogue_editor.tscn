@@ -28,11 +28,11 @@ script = ExtResource("1_p3bld")
 
 [node name="NodePhrase" parent="PanelContainer/GraphEdit" instance=ExtResource("3_h0g4i")]
 layout_mode = 0
-offset_left = 209.661
-offset_top = 362.201
-offset_right = 488.661
-offset_bottom = 541.201
-position_offset = Vector2(209.661, 362.201)
+offset_left = 507.0
+offset_top = 156.0
+offset_right = 786.0
+offset_bottom = 335.0
+position_offset = Vector2(507, 156)
 
 [node name="NodeAnchor" parent="PanelContainer/GraphEdit" instance=ExtResource("2_oc4yh")]
 layout_mode = 0
@@ -41,6 +41,14 @@ offset_top = 198.0
 offset_right = 445.0
 offset_bottom = 283.0
 position_offset = Vector2(212, 198)
+
+[node name="NodePhrase2" parent="PanelContainer/GraphEdit" instance=ExtResource("3_h0g4i")]
+layout_mode = 0
+offset_left = 853.0
+offset_top = 157.0
+offset_right = 1132.0
+offset_bottom = 336.0
+position_offset = Vector2(853, 157)
 
 [connection signal="connection_request" from="PanelContainer/GraphEdit" to="PanelContainer/GraphEdit" method="_on_connection_request"]
 [connection signal="disconnection_request" from="PanelContainer/GraphEdit" to="PanelContainer/GraphEdit" method="_on_disconnection_request"]

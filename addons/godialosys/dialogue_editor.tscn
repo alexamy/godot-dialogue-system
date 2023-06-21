@@ -43,3 +43,4 @@ offset_bottom = 283.0
 position_offset = Vector2(212, 198)
 
 [connection signal="connection_request" from="PanelContainer/GraphEdit" to="." method="_on_graph_edit_connection_request"]
+[connection signal="popup_request" from="PanelContainer/GraphEdit" to="." method="_on_graph_edit_popup_request"]

@@ -7,13 +7,19 @@ size_flags_vertical = 3
 script = ExtResource("1_428bf")
 
 [node name="Name" type="LineEdit" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.239216, 0.65098, 0.239216, 1)
 placeholder_text = "Name"
 
 [node name="Text" type="TextEdit" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 3
-placeholder_text = "Phrase text"
+placeholder_text = "Phrase"
+scroll_fit_content_height = true
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4

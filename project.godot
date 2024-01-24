@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DialogueSystem"
-run/main_scene="res://dsl/example/dialogue_dsl.tscn"
+run/main_scene="res://nodes/example/dialogue_nodes.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,17 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxp53n2y72eq8"]
+[gd_scene load_steps=2 format=3 uid="uid://dku6na48eos1k"]
 
-[ext_resource type="ButtonGroup" uid="uid://kpapt7mjhuq7" path="res://dsl/example/button_group.tres" id="1_wypkm"]
-[ext_resource type="Script" path="res://dsl/example/dialogue_scene.gd" id="2_mc2bw"]
-[ext_resource type="Resource" uid="uid://ce1xel2m6o52i" path="res://dsl/example/dialogue1.tres" id="3_qsgu2"]
+[ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choice_buttons_group.tres" id="1_8bdna"]
 
 [node name="Root" type="Node2D"]
 
-[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
-script = ExtResource("2_mc2bw")
-name_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Name")
-text_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Text")
-button_group = ExtResource("1_wypkm")
-dialogue = ExtResource("3_qsgu2")
+[node name="Interpreter" type="Node" parent="."]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -29,51 +22,53 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+[node name="Phrase" type="VBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Name" type="Label" parent="UI/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Name" type="Label" parent="UI/MarginContainer/VBoxContainer/Phrase"]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 theme_override_font_sizes/font_size = 36
 text = "Name"
 
-[node name="Text" type="Label" parent="UI/MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="Text" type="Label" parent="UI/MarginContainer/VBoxContainer/Phrase"]
+custom_minimum_size = Vector2(100, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Text saying Text saying Text saying Text saying Text saying Text saying Text saying Text saying Text saying Text sayingText saying Text saying Text saying Text saying Text sayingText saying Text saying Text saying Text saying Text sayingText saying Text saying Text saying Text saying Text saying"
 autowrap_mode = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+[node name="Choices" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 15
 
-[node name="Option1" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Option1" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("1_wypkm")
+button_group = ExtResource("1_8bdna")
 text = "1"
 
-[node name="Option2" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Option2" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("1_wypkm")
+button_group = ExtResource("1_8bdna")
 text = "2"
 
-[node name="Option3" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Option3" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("1_wypkm")
+button_group = ExtResource("1_8bdna")
 text = "3"

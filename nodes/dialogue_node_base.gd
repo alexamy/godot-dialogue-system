@@ -2,7 +2,8 @@ extends Node
 
 class_name DialogueNodeBase
 
-@export var interpreter: DialogueInterpreter
+
+@export var interpreter: DialogueInterpreterBase
 
 # start this block
 func _start_dialogue():

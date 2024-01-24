@@ -18,6 +18,8 @@ interpreter = NodePath("../Interpreter")
 
 [node name="DialoguePhrase" type="Node" parent="DialogueGroup"]
 script = ExtResource("3_85dl3")
+person_name = null
+text = null
 
 [node name="UI" type="CanvasLayer" parent="."]
 

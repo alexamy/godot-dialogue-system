@@ -1,0 +1,3 @@
+extends DialogueNodeBase
+
+class_name DialogueGroup

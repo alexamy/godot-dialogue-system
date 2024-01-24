@@ -1,21 +1,24 @@
 [gd_scene load_steps=7 format=3 uid="uid://dku6na48eos1k"]
 
 [ext_resource type="Script" path="res://nodes/example/dialogue_example.gd" id="1_fmh27"]
-[ext_resource type="Script" path="res://nodes/example/interpreter_console.gd" id="2_sabvj"]
+[ext_resource type="Script" path="res://nodes/example/interpreter_example.gd" id="2_0ag0t"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_group.gd" id="3_058ay"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_phrase.gd" id="4_7n7nw"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_question.gd" id="5_p0w7a"]
-[ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choice_buttons_group.tres" id="6_uuo8l"]
+[ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choices_button_group.tres" id="6_uuo8l"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_fmh27")
 
-[node name="Interpreter" type="Node" parent="."]
-script = ExtResource("2_sabvj")
+[node name="DialogueInterpreter" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
+script = ExtResource("2_0ag0t")
+name_label = NodePath("../UI/MarginContainer/VBoxContainer/Phrase/Name")
+text_label = NodePath("../UI/MarginContainer/VBoxContainer/Phrase/Text")
+choices_button_group = ExtResource("6_uuo8l")
 
 [node name="DialogueGroup" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
 script = ExtResource("3_058ay")
-interpreter = NodePath("../Interpreter")
+interpreter = NodePath("../DialogueInterpreter")
 
 [node name="DialoguePhrase" type="Node" parent="DialogueGroup"]
 script = ExtResource("4_7n7nw")

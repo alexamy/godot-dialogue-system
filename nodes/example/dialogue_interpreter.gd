@@ -1,2 +1,2 @@
-extends DialogueInterpreter
+extends DialogueInterpreterBase
 

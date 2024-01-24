@@ -1,3 +1,3 @@
-extends DialogueInterpreter
+extends DialogueInterpreterDSL
 
 var wife = "Mary"

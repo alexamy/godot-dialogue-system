@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dku6na48eos1k"]
+[gd_scene load_steps=3 format=3 uid="uid://dku6na48eos1k"]
 
-[ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choice_buttons_group.tres" id="1_8bdna"]
+[ext_resource type="Script" path="res://nodes/example/dialogue_interpreter.gd" id="1_p0nts"]
+[ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choice_buttons_group.tres" id="2_oabjl"]
 
 [node name="Root" type="Node2D"]
 
 [node name="Interpreter" type="Node" parent="."]
+script = ExtResource("1_p0nts")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -52,7 +54,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("1_8bdna")
+button_group = ExtResource("2_oabjl")
 text = "1"
 
 [node name="Option2" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
@@ -61,7 +63,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("1_8bdna")
+button_group = ExtResource("2_oabjl")
 text = "2"
 
 [node name="Option3" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
@@ -70,5 +72,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("1_8bdna")
+button_group = ExtResource("2_oabjl")
 text = "3"

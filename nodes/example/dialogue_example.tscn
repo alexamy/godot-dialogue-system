@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dku6na48eos1k"]
+[gd_scene load_steps=8 format=3 uid="uid://dku6na48eos1k"]
 
 [ext_resource type="Script" path="res://nodes/example/dialogue_example.gd" id="1_fmh27"]
 [ext_resource type="Script" path="res://nodes/example/interpreter_example.gd" id="2_0ag0t"]
+[ext_resource type="Script" path="res://nodes/example/interpreter_console.gd" id="2_sabvj"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_group.gd" id="3_058ay"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_phrase.gd" id="4_7n7nw"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_question.gd" id="5_p0w7a"]
@@ -9,6 +10,9 @@
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_fmh27")
+
+[node name="ConsoleInterpreter" type="Node" parent="."]
+script = ExtResource("2_sabvj")
 
 [node name="DialogueInterpreter" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
 script = ExtResource("2_0ag0t")

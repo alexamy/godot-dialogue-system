@@ -4,9 +4,11 @@ class_name DialogueNodeBase
 
 @export var interpreter: DialogueInterpreter
 
+# start this block
 func _start_dialogue():
-	var interpreter = _find_interpreter()
+	pass
 
+# find the nearest dialogue interpreter on self or above the tree
 func _find_interpreter():
 	var _interpreter = self.get("interpreter")
 	while(!_interpreter):

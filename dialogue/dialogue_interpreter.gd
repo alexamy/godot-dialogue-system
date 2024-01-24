@@ -1,6 +1,6 @@
 extends Node
 
-class_name DialogueInterpreter
+class_name DialogueInterpreterDSL
 
 @export var dialogue: DialogueData
 @onready var blocks = dialogue.parse()

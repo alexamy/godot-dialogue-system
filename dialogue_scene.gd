@@ -1,4 +1,4 @@
-extends DialogueInterpreter
+extends DialogueInterpreterDSL
 
 @export var name_label: Label
 @export var text_label: Label

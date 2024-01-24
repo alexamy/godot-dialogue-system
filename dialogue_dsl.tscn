@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxp53n2y72eq8"]
 
-[ext_resource type="ButtonGroup" uid="uid://kpapt7mjhuq7" path="res://button_group.tres" id="1_30b68"]
-[ext_resource type="Script" path="res://dialogue_scene.gd" id="1_sy21l"]
-[ext_resource type="Resource" uid="uid://ce1xel2m6o52i" path="res://dialogue1.tres" id="2_ekxdr"]
+[ext_resource type="ButtonGroup" uid="uid://kpapt7mjhuq7" path="res://button_group.tres" id="1_wypkm"]
+[ext_resource type="Script" path="res://dialogue_scene.gd" id="2_mc2bw"]
+[ext_resource type="Resource" uid="uid://ce1xel2m6o52i" path="res://dialogue1.tres" id="3_qsgu2"]
 
 [node name="Root" type="Node2D"]
 
@@ -49,7 +49,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("1_30b68")
+button_group = ExtResource("1_wypkm")
 text = "1"
 
 [node name="Option2" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -58,7 +58,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("1_30b68")
+button_group = ExtResource("1_wypkm")
 text = "2"
 
 [node name="Option3" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -67,12 +67,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("1_30b68")
+button_group = ExtResource("1_wypkm")
 text = "3"
 
 [node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
-script = ExtResource("1_sy21l")
+script = ExtResource("2_mc2bw")
 name_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Name")
 text_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Text")
-button_group = ExtResource("1_30b68")
-dialogue = ExtResource("2_ekxdr")
+button_group = ExtResource("1_wypkm")
+dialogue = ExtResource("3_qsgu2")

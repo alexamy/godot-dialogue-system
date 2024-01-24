@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dku6na48eos1k"]
+[gd_scene load_steps=7 format=3 uid="uid://dku6na48eos1k"]
 
 [ext_resource type="Script" path="res://nodes/example/dialogue_interpreter.gd" id="1_p0nts"]
 [ext_resource type="Script" path="res://nodes/example/dialogue.gd" id="1_rogtd"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_group.gd" id="2_acch0"]
 [ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choice_buttons_group.tres" id="2_oabjl"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_phrase.gd" id="3_85dl3"]
+[ext_resource type="Script" path="res://nodes/blocks/dialogue_question.gd" id="5_ig6fb"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_rogtd")
@@ -25,6 +26,11 @@ text = "Hello!"
 script = ExtResource("3_85dl3")
 person_name = "Pace"
 text = "Hi!"
+
+[node name="DialogueQuestion" type="Node" parent="DialogueGroup"]
+script = ExtResource("5_ig6fb")
+question = "What to do today?"
+options = Array[String](["Work", "Sleep"])
 
 [node name="UI" type="CanvasLayer" parent="."]
 

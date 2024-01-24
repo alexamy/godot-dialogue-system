@@ -2,7 +2,7 @@ extends DialogueNodeBase
 
 class_name DialoguePhrase
 
-@export var person_name = ""
+@export_multiline var person_name = ""
 @export_multiline var text = ""
 
 func start_dialogue():

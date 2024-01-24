@@ -1,34 +1,34 @@
 [gd_scene load_steps=7 format=3 uid="uid://dku6na48eos1k"]
 
-[ext_resource type="Script" path="res://nodes/example/dialogue_interpreter_console.gd" id="1_p0nts"]
-[ext_resource type="Script" path="res://nodes/example/dialogue.gd" id="1_rogtd"]
-[ext_resource type="Script" path="res://nodes/blocks/dialogue_group.gd" id="2_acch0"]
-[ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choice_buttons_group.tres" id="2_oabjl"]
-[ext_resource type="Script" path="res://nodes/blocks/dialogue_phrase.gd" id="3_85dl3"]
-[ext_resource type="Script" path="res://nodes/blocks/dialogue_question.gd" id="5_ig6fb"]
+[ext_resource type="Script" path="res://nodes/example/dialogue_example.gd" id="1_fmh27"]
+[ext_resource type="Script" path="res://nodes/example/dialogue_interpreter_console.gd" id="2_sabvj"]
+[ext_resource type="Script" path="res://nodes/blocks/dialogue_group.gd" id="3_058ay"]
+[ext_resource type="Script" path="res://nodes/blocks/dialogue_phrase.gd" id="4_7n7nw"]
+[ext_resource type="Script" path="res://nodes/blocks/dialogue_question.gd" id="5_p0w7a"]
+[ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choice_buttons_group.tres" id="6_uuo8l"]
 
 [node name="Root" type="Node2D"]
-script = ExtResource("1_rogtd")
+script = ExtResource("1_fmh27")
 
 [node name="Interpreter" type="Node" parent="."]
-script = ExtResource("1_p0nts")
+script = ExtResource("2_sabvj")
 
 [node name="DialogueGroup" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
-script = ExtResource("2_acch0")
+script = ExtResource("3_058ay")
 interpreter = NodePath("../Interpreter")
 
 [node name="DialoguePhrase" type="Node" parent="DialogueGroup"]
-script = ExtResource("3_85dl3")
+script = ExtResource("4_7n7nw")
 person_name = "Hale"
 text = "Hello!"
 
 [node name="DialoguePhrase2" type="Node" parent="DialogueGroup"]
-script = ExtResource("3_85dl3")
+script = ExtResource("4_7n7nw")
 person_name = "Pace"
 text = "Hi!"
 
 [node name="DialogueQuestion" type="Node" parent="DialogueGroup"]
-script = ExtResource("5_ig6fb")
+script = ExtResource("5_p0w7a")
 question = "What to do today?"
 options = Array[String](["Work", "Sleep"])
 
@@ -78,7 +78,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("2_oabjl")
+button_group = ExtResource("6_uuo8l")
 text = "1"
 
 [node name="Option2" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
@@ -87,7 +87,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("2_oabjl")
+button_group = ExtResource("6_uuo8l")
 text = "2"
 
 [node name="Option3" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
@@ -96,5 +96,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
 toggle_mode = true
-button_group = ExtResource("2_oabjl")
+button_group = ExtResource("6_uuo8l")
 text = "3"

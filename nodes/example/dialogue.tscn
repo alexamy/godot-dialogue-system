@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dku6na48eos1k"]
 
-[ext_resource type="Script" path="res://nodes/example/dialogue_interpreter_example.gd" id="1_p0nts"]
+[ext_resource type="Script" path="res://nodes/example/dialogue_interpreter_console.gd" id="1_p0nts"]
 [ext_resource type="Script" path="res://nodes/example/dialogue.gd" id="1_rogtd"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_group.gd" id="2_acch0"]
 [ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choice_buttons_group.tres" id="2_oabjl"]

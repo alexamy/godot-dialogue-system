@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxp53n2y72eq8"]
 
-[ext_resource type="ButtonGroup" uid="uid://kpapt7mjhuq7" path="res://dsl/button_group.tres" id="1_wypkm"]
-[ext_resource type="Script" path="res://dsl/dialogue_scene.gd" id="2_mc2bw"]
-[ext_resource type="Resource" uid="uid://ce1xel2m6o52i" path="res://dsl/dialogue1.tres" id="3_qsgu2"]
+[ext_resource type="ButtonGroup" uid="uid://kpapt7mjhuq7" path="res://dsl/example/button_group.tres" id="1_wypkm"]
+[ext_resource type="Script" path="res://dsl/example/dialogue_scene.gd" id="2_mc2bw"]
+[ext_resource type="Resource" uid="uid://ce1xel2m6o52i" path="res://dsl/example/dialogue1.tres" id="3_qsgu2"]
 
 [node name="Root" type="Node2D"]
 

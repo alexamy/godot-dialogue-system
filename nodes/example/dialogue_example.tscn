@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://dku6na48eos1k"]
+
+[ext_resource type="Script" path="res://nodes/example/dialogue_example.gd" id="1_fmh27"]
+[ext_resource type="Script" path="res://nodes/example/interpreter_example.gd" id="2_0ag0t"]
+[ext_resource type="Script" path="res://nodes/example/interpreter_console.gd" id="2_sabvj"]
+[ext_resource type="Script" path="res://nodes/blocks/dialogue_group.gd" id="3_058ay"]
+[ext_resource type="Script" path="res://nodes/blocks/dialogue_phrase.gd" id="4_7n7nw"]
+[ext_resource type="Script" path="res://nodes/blocks/dialogue_question.gd" id="5_p0w7a"]
+[ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choices_button_group.tres" id="6_uuo8l"]
+[ext_resource type="Script" path="res://nodes/blocks/dialogue_question_option.gd" id="8_nhqmb"]
+
+[sub_resource type="Resource" id="Resource_hm6hf"]
+script = ExtResource("8_nhqmb")
+option = "Work"
+path = NodePath("../../WorkDialogue")
+
+[sub_resource type="Resource" id="Resource_q872u"]
+script = ExtResource("8_nhqmb")
+option = "Sleep"
+path = NodePath("../../SleepDialogue")
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_fmh27")
+
+[node name="ConsoleInterpreter" type="Node" parent="."]
+script = ExtResource("2_sabvj")
+
+[node name="DialogueInterpreter" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
+script = ExtResource("2_0ag0t")
+name_label = NodePath("../UI/MarginContainer/VBoxContainer/Phrase/Name")
+text_label = NodePath("../UI/MarginContainer/VBoxContainer/Phrase/Text")
+choices_button_group = ExtResource("6_uuo8l")
+
+[node name="DialogueGroup" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
+script = ExtResource("3_058ay")
+interpreter = NodePath("../DialogueInterpreter")
+
+[node name="DialoguePhrase" type="Node" parent="DialogueGroup"]
+script = ExtResource("4_7n7nw")
+person_name = "Hale"
+text = "Hello!"
+
+[node name="DialoguePhrase2" type="Node" parent="DialogueGroup"]
+script = ExtResource("4_7n7nw")
+person_name = "Pace"
+text = "Hi!"
+
+[node name="DialogueQuestion" type="Node" parent="DialogueGroup"]
+script = ExtResource("5_p0w7a")
+question = "What to do today?"
+options = Array[ExtResource("8_nhqmb")]([SubResource("Resource_hm6hf"), SubResource("Resource_q872u")])
+
+[node name="WorkDialogue" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
+script = ExtResource("3_058ay")
+interpreter = NodePath("../DialogueInterpreter")
+
+[node name="DialoguePhrase" type="Node" parent="WorkDialogue"]
+script = ExtResource("4_7n7nw")
+person_name = "Hale"
+text = "I should work."
+
+[node name="SleepDialogue" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
+script = ExtResource("3_058ay")
+interpreter = NodePath("../DialogueInterpreter")
+
+[node name="DialoguePhrase" type="Node" parent="SleepDialogue"]
+script = ExtResource("4_7n7nw")
+person_name = "Pace"
+text = "I should sleep."
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="Phrase" type="VBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="UI/MarginContainer/VBoxContainer/Phrase"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+theme_override_font_sizes/font_size = 36
+text = "Name"
+
+[node name="Text" type="Label" parent="UI/MarginContainer/VBoxContainer/Phrase"]
+custom_minimum_size = Vector2(100, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Text saying Text saying Text saying Text saying Text saying Text saying Text saying Text saying Text saying Text sayingText saying Text saying Text saying Text saying Text sayingText saying Text saying Text saying Text saying Text sayingText saying Text saying Text saying Text saying Text saying"
+autowrap_mode = 3
+
+[node name="Choices" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Option1" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+toggle_mode = true
+button_group = ExtResource("6_uuo8l")
+text = "1"
+
+[node name="Option2" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+toggle_mode = true
+button_group = ExtResource("6_uuo8l")
+text = "2"
+
+[node name="Option3" type="Button" parent="UI/MarginContainer/VBoxContainer/Choices"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+toggle_mode = true
+button_group = ExtResource("6_uuo8l")
+text = "3"

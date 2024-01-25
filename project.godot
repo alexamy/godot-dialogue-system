@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DialogueSystem"
-run/main_scene="res://dsl/example/dialogue_dsl.tscn"
+run/main_scene="res://nodes/example/dialogue_example.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,7 +22,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-tabs/plugin.cfg")
+enabled=PackedStringArray("res://addons/editor_icon_previewer/plugin.cfg", "res://addons/script-tabs/plugin.cfg")
 
 [rendering]
 

@@ -6,6 +6,13 @@
 
 [node name="Root" type="Node2D"]
 
+[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
+script = ExtResource("2_mc2bw")
+name_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Name")
+text_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Text")
+button_group = ExtResource("1_wypkm")
+dialogue = ExtResource("3_qsgu2")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
@@ -33,6 +40,7 @@ theme_override_font_sizes/font_size = 36
 text = "Name"
 
 [node name="Text" type="Label" parent="UI/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Text saying Text saying Text saying Text saying Text saying Text saying Text saying Text saying Text saying Text sayingText saying Text saying Text saying Text saying Text sayingText saying Text saying Text saying Text saying Text sayingText saying Text saying Text saying Text saying Text saying"
@@ -69,10 +77,3 @@ theme_override_font_sizes/font_size = 28
 toggle_mode = true
 button_group = ExtResource("1_wypkm")
 text = "3"
-
-[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
-script = ExtResource("2_mc2bw")
-name_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Name")
-text_label = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/Text")
-button_group = ExtResource("1_wypkm")
-dialogue = ExtResource("3_qsgu2")

@@ -1,3 +1,5 @@
+@icon("res://nodes/blocks/icons/phrase.png")
+
 extends DialogueNodeBase
 
 class_name DialoguePhrase

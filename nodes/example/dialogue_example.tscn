@@ -35,11 +35,6 @@ choices_button_group = ExtResource("6_uuo8l")
 script = ExtResource("3_058ay")
 interpreter = NodePath("../DialogueInterpreter")
 
-[node name="DialogueQuestion" type="Node" parent="DialogueGroup"]
-script = ExtResource("5_p0w7a")
-question = "What to do today?"
-options = Array[ExtResource("8_nhqmb")]([SubResource("Resource_hm6hf"), SubResource("Resource_q872u")])
-
 [node name="DialoguePhrase" type="Node" parent="DialogueGroup"]
 script = ExtResource("4_7n7nw")
 person_name = "Hale"
@@ -50,16 +45,23 @@ script = ExtResource("4_7n7nw")
 person_name = "Pace"
 text = "Hi!"
 
-[node name="WorkDialogue" type="Node" parent="."]
+[node name="DialogueQuestion" type="Node" parent="DialogueGroup"]
+script = ExtResource("5_p0w7a")
+question = "What to do today?"
+options = Array[ExtResource("8_nhqmb")]([SubResource("Resource_hm6hf"), SubResource("Resource_q872u")])
+
+[node name="WorkDialogue" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
 script = ExtResource("3_058ay")
+interpreter = NodePath("../DialogueInterpreter")
 
 [node name="DialoguePhrase" type="Node" parent="WorkDialogue"]
 script = ExtResource("4_7n7nw")
 person_name = "Hale"
 text = "I should work."
 
-[node name="SleepDialogue" type="Node" parent="."]
+[node name="SleepDialogue" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
 script = ExtResource("3_058ay")
+interpreter = NodePath("../DialogueInterpreter")
 
 [node name="DialoguePhrase" type="Node" parent="SleepDialogue"]
 script = ExtResource("4_7n7nw")

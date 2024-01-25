@@ -10,9 +10,12 @@ func start_dialogue():
 
 # find the nearest dialogue interpreter on self or above the tree
 func _get_interpreter() -> DialogueInterpreterBase:
-	var _interpreter = self.get("interpreter")
+	var parent = self
+	var _interpreter = parent.get("interpreter")
 	while(!_interpreter):
-		var parent = get_parent()
-		if(!parent): printerr("No interpreter found.")
+		parent = parent.get_parent()
+		if not parent:
+			printerr("No interpreter found.")
+			break
 		_interpreter = parent.get("interpreter")
 	return _interpreter

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dku6na48eos1k"]
+[gd_scene load_steps=11 format=3 uid="uid://dku6na48eos1k"]
 
 [ext_resource type="Script" path="res://nodes/example/dialogue_example.gd" id="1_fmh27"]
 [ext_resource type="Script" path="res://nodes/example/interpreter_example.gd" id="2_0ag0t"]
@@ -7,6 +7,17 @@
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_phrase.gd" id="4_7n7nw"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_question.gd" id="5_p0w7a"]
 [ext_resource type="ButtonGroup" uid="uid://ctgitlc0v7jb6" path="res://nodes/example/choices_button_group.tres" id="6_uuo8l"]
+[ext_resource type="Script" path="res://nodes/blocks/dialogue_question_option.gd" id="8_nhqmb"]
+
+[sub_resource type="Resource" id="Resource_hm6hf"]
+script = ExtResource("8_nhqmb")
+option = "Work"
+path = NodePath("../../WorkDialogue")
+
+[sub_resource type="Resource" id="Resource_q872u"]
+script = ExtResource("8_nhqmb")
+option = "Sleep"
+path = NodePath("../../SleepDialogue")
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_fmh27")
@@ -37,7 +48,7 @@ text = "Hi!"
 [node name="DialogueQuestion" type="Node" parent="DialogueGroup"]
 script = ExtResource("5_p0w7a")
 question = "What to do today?"
-options = Array[String](["Work", "Sleep"])
+options = Array[ExtResource("8_nhqmb")]([SubResource("Resource_hm6hf"), SubResource("Resource_q872u")])
 
 [node name="WorkDialogue" type="Node" parent="."]
 script = ExtResource("3_058ay")

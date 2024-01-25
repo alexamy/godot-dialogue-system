@@ -1,4 +1,4 @@
-@icon("res://nodes/blocks/icons/group.png")
+@icon("res://nodes/icons/group.png")
 
 extends DialogueNodeBase
 

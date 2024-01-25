@@ -1,3 +1,5 @@
+@icon("res://nodes/icons/interpreter.png")
+
 extends Node
 
 class_name DialogueInterpreterBase

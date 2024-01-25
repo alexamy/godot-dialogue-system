@@ -9,12 +9,12 @@ extends DialogueInterpreterBase
 func _ready():
 	_hide_buttons()
 
-func _say(name_t: String, text: String):
+func _say(name_t, text):
 	name_label.text = name_t
 	text_label.text = text
 	await get_tree().create_timer(1.5).timeout
 
-func _ask(text: String, choices: Array[String]) -> int:
+func _ask(text, choices) -> int:
 	_say(text, "")
 	_show_buttons(choices)
 	await choices_button_group.pressed
@@ -23,7 +23,8 @@ func _ask(text: String, choices: Array[String]) -> int:
 	_hide_buttons()
 	return idx
 
-func _show_buttons(choices: Array[String]):
+# Can not use Array[String]. Bug?
+func _show_buttons(choices: Array):
 	for i in buttons.size():
 		if i == choices.size(): return
 		buttons[i].visible = true

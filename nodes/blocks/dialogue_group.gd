@@ -10,7 +10,6 @@ func start_dialogue():
 
 
 func _exec(block: DialogueNodeBase):
-	var result = await block.start_dialogue()
-	if result is NodePath:
-		var branch = get_node(result)
-		await _exec(branch)
+	var target = await block.start_dialogue()
+	if target is DialogueNodeBase:
+		await _exec(target)

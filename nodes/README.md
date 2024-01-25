@@ -1,8 +1,10 @@
 # Node-based dialogue system
 There are two parts of the system:
+
 - Blocks
 
 For making dialogue content.
+
 - Interpreter
 
 For executing dialogue.
@@ -17,16 +19,24 @@ Each block can have it's own interpreter link, or will search for
 one above the parent tree.
 
 Derived nodes:
+
 - Group
 
 Groups and sequentially runs other nodes.
+
 - Phrase
 
 Provides `name` and `text`.
+
 - Question
 
 Provides `question` and array of text `option` / NodePath `target`.
 After selecting some `option`, dialogue will continue from `target`.
+
+- Custom node
+
+Just extend `DialogueNodeBase` and redefine `start_dialogue()`.
+If `start_dialogue` will return dialogue node, it will be executed with group, if nothing is returned, group executes only this node.
 
 ## Dialogue interpreter
 Base node: `DialogueInterpreterBase`.

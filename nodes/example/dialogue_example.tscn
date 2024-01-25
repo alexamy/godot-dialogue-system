@@ -22,10 +22,10 @@ path = NodePath("../../SleepDialogue")
 [node name="Root" type="Node2D"]
 script = ExtResource("1_fmh27")
 
-[node name="ConsoleInterpreter" type="Node" parent="."]
+[node name="DialogueInterpreterConsole" type="Node" parent="."]
 script = ExtResource("2_sabvj")
 
-[node name="DialogueInterpreter" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
+[node name="DialogueInterpreterUI" type="Node" parent="." node_paths=PackedStringArray("name_label", "text_label")]
 script = ExtResource("2_0ag0t")
 name_label = NodePath("../UI/MarginContainer/VBoxContainer/Phrase/Name")
 text_label = NodePath("../UI/MarginContainer/VBoxContainer/Phrase/Text")
@@ -33,7 +33,7 @@ choices_button_group = ExtResource("6_uuo8l")
 
 [node name="DialogueGroup" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
 script = ExtResource("3_058ay")
-interpreter = NodePath("../DialogueInterpreter")
+interpreter = NodePath("../DialogueInterpreterUI")
 
 [node name="DialoguePhrase" type="Node" parent="DialogueGroup"]
 script = ExtResource("4_7n7nw")
@@ -52,7 +52,7 @@ options = Array[ExtResource("8_nhqmb")]([SubResource("Resource_hm6hf"), SubResou
 
 [node name="WorkDialogue" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
 script = ExtResource("3_058ay")
-interpreter = NodePath("../DialogueInterpreter")
+interpreter = NodePath("../DialogueInterpreterUI")
 
 [node name="DialoguePhrase" type="Node" parent="WorkDialogue"]
 script = ExtResource("4_7n7nw")
@@ -61,7 +61,7 @@ text = "I should work."
 
 [node name="SleepDialogue" type="Node" parent="." node_paths=PackedStringArray("interpreter")]
 script = ExtResource("3_058ay")
-interpreter = NodePath("../DialogueInterpreter")
+interpreter = NodePath("../DialogueInterpreterUI")
 
 [node name="DialoguePhrase" type="Node" parent="SleepDialogue"]
 script = ExtResource("4_7n7nw")

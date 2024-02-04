@@ -15,7 +15,7 @@ Must be redefined in a derived class.
 
 - `interpreter` accessor
 
-Access node's **`Interpreter`** property. If property is not set in the editor, method will attempt to find an interpreter above in a node tree. If none is found, prints an error.
+Access node's **`Interpreter`** property. If property is not set in the editor, accessor will attempt to find an interpreter above in a node tree. If none is found, prints an error.
 
 - `Interpreter` property
 
@@ -28,7 +28,7 @@ Class: [`DialoguePhrase`](./blocks/dialogue_phrase.gd).
 
 Dialogue node with `name` and `text` multiline properties.
 
-When executed via `start_dialogue`, will run `say` method of an interpreter, providing it's properties as arguments.
+When executed via `start_dialogue`, will run `say` method of an interpreter with phrase name and text.
 
 ![](./imgs/phrase_props.png)
 
@@ -39,7 +39,7 @@ Class: [`DialogueQuestion`](./blocks/dialogue_question.gd).
 
 Dialogue node with `question` and `options` properties.
 
-When executed via `start_dialogue`, will run `ask` method of an interpreter, providing question text and options texts.
+When executed via `start_dialogue`, will run `ask` method of an interpreter with question text and options texts array.
 
 `ask` method **must** return index of choosen question option.
 
@@ -70,14 +70,15 @@ Every derived node must redefine:
 
 Used when executing `Phrase` dialogue node.
 
-- `ask(question: String, options: Array[String])`
+- `ask(question: String, options: Array[String]) -> int`
 
-Used when executing `Question` dialogue node.
+Used when executing `Question` dialogue node. 
+Must return index of options from `options` array.
 
 ## Example
 Scene: [`dialogue_example.tscn`](./example/dialogue_example.tscn).
 
 Example interpreters:
-- [`DialogueInterpreterConsole`](./example/interpreter_example.gd) for printing in a console
+- [`DialogueInterpreterConsole`](./example/interpreter_console.gd) for printing in a console
 
 - [`DialogueInterpreterUI`](./example/interpreter_ui.gd) for ui-based dialogue.

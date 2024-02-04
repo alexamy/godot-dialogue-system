@@ -1,22 +1,28 @@
 # Node-based dialogue system
-There are two parts of the system:
 
-- Blocks
+Two core concepts of this system are **dialogue nodes** and **interpreters**.
 
-For making dialogue content.
+Dialogue is composed with **dialogue nodes** in a scene tab and later executed via **interpreter** in a script.
 
-- Interpreter
+## Dialogue nodes
+Base class: [`DialogueNodeBase`](./dialogue_node_base.gd).
+Each node has:
+- `start_dialogue` method
 
-For executing dialogue.
+Must be redefined in a derived class.
 
-## Dialogue blocks
-Base node: `DialogueNodeBase`.
+- `get_interpreter` method
 
-Every derived node must redefine:
-- `start_dialogue()`
+Helper for accesing node's interpreter. If editor property is not set, will tries to find an interpreter above in a tree. If none is found, prints an error.
 
-Each block can have it's own interpreter link, or will search for
-one above the parent tree.
+- `Interpreter` property
+
+Used in dialogue execution.
+
+![](./imgs/node_interpreter.png)
+
+### Phrase
+
 
 Derived nodes:
 

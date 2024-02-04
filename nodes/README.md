@@ -24,6 +24,8 @@ Access node's **`Interpreter`** property. If property is not set in the editor, 
 ### Phrase
 ![](./imgs/phrase_node.png)
 
+Class: [`DialoguePhrase`](./blocks/dialogue_phrase.gd).
+
 Dialogue node with `name` and `text` multiline properties.
 
 When executed via `start_dialogue`, will run `say` method of an interpreter, providing it's properties as arguments.
@@ -33,11 +35,13 @@ When executed via `start_dialogue`, will run `say` method of an interpreter, pro
 ## Question
 ![](./imgs/question_node.png)
 
+Class: [`DialogueQuestion`](./blocks/dialogue_question.gd).
+
 Dialogue node with `question` and `options` properties.
 
-When executed via `start_dialogue`, will run `ask` method of an interpreter, providing question text and text from it's options.
+When executed via `start_dialogue`, will run `ask` method of an interpreter, providing question text and options texts.
 
-`ask` method must return index of choosen question option.
+`ask` method **must** return index of choosen question option.
 
 ![](./imgs/question_props.png)
 
@@ -45,8 +49,12 @@ When executed via `start_dialogue`, will run `ask` method of an interpreter, pro
 
 ![](./imgs/question_resource.png)
 
+Class: [`DialogueQuestionOption`](./blocks/dialogue_question_option.gd).
+
 ## Group
 ![](./imgs/group_node.png)
+
+Class: [`DialogueGroup`](./blocks/dialogue_group.gd).
 
 Dialogue node used for grouping other nodes.
 
@@ -55,11 +63,16 @@ When executed via `start_dialogue`, will run `start_dialogue` of each of it's ch
 Children's `start_dialogue` can return node path of another dialogue node, and it's `start_dialogue` will be executed in a sequence as well. This behaviour provides a way to change a way of dialogue execution through question dialogue node, for example.
 
 ## Dialogue interpreter
-Base node: `DialogueInterpreterBase`.
+Base node: [`DialogueInterpreterBase`](./dialogue_interpreter_base.gd).
 
 Every derived node must redefine:
-- `_say(name, text)`
-- `_ask(question, options)`
+- `say(name: String, text: String)`
+
+Used when executing `Phrase` dialogue node.
+
+- `ask(question: String, options: Array[String])`
+
+Used when executing `Question` dialogue node.
 
 ## Example
 `example/dialogue_example.tscn`.

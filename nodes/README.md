@@ -6,18 +6,18 @@ Dialogue is composed with **dialogue nodes** in a scene tab and later executed v
 
 ## Dialogue nodes
 Base class: [`DialogueNodeBase`](./dialogue_node_base.gd).
-Each node has:
+
+Every node has:
 - `start_dialogue` method
 
+Used for starting interpreter with dialogue data.
 Must be redefined in a derived class.
 
-- `get_interpreter` method
+- `interpreter` accessor
 
-Helper for accesing node's interpreter. If editor property is not set, will tries to find an interpreter above in a tree. If none is found, prints an error.
+Access node's **`Interpreter`** property. If property is not set in the editor, method will attempt to find an interpreter above in a node tree. If none is found, prints an error.
 
 - `Interpreter` property
-
-Used in dialogue execution.
 
 ![](./imgs/node_interpreter.png)
 

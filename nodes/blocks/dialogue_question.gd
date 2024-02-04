@@ -9,7 +9,7 @@ class_name DialogueQuestion
 
 func start_dialogue():
 	var texts = options.map(func(o): return o.option)
-	var idx = await interpreter._ask(question, texts)
+	var idx = await interpreter.ask(question, texts)
 	var path = options[idx].path
 	var block = get_node(path)
 	return block

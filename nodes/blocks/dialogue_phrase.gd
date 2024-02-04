@@ -8,6 +8,6 @@ class_name DialoguePhrase
 @export_multiline var text = ""
 
 func start_dialogue():
-	await interpreter._say(person_name, text)
+	await interpreter.say(person_name, text)
 
 

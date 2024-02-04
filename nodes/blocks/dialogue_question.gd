@@ -8,7 +8,7 @@ class_name DialogueQuestion
 @export var options: Array[DialogueQuestionOption]
 
 func start_dialogue():
-	var texts = options.map(func(o): return o.option)
+	var texts = options.map(func(o): return o.text)
 	var idx = await interpreter.ask(question, texts)
 	var path = options[idx].path
 	var block = get_node(path)

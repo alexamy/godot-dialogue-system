@@ -11,12 +11,12 @@
 
 [sub_resource type="Resource" id="Resource_hm6hf"]
 script = ExtResource("8_nhqmb")
-option = "Work"
+text = "Work"
 path = NodePath("../../WorkDialogue")
 
 [sub_resource type="Resource" id="Resource_q872u"]
 script = ExtResource("8_nhqmb")
-option = "Sleep"
+text = "Relax"
 path = NodePath("../../SleepDialogue")
 
 [node name="Root" type="Node2D"]

@@ -2,9 +2,9 @@ extends Resource
 
 class_name DialogueQuestionOption
 
-@export_multiline var option: String
+@export_multiline var text: String
 @export var path: NodePath
 
-func _ready(p_option = "", p_path = ""):
-	option = p_option
+func _ready(p_text = "", p_path = ""):
+	text = p_text
 	path = p_path

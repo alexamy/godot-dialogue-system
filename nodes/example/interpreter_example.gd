@@ -9,13 +9,13 @@ extends DialogueInterpreterBase
 func _ready():
 	_hide_buttons()
 
-func _say(name_t, text):
+func say(name_t, text):
 	name_label.text = name_t
 	text_label.text = text
 	await get_tree().create_timer(1.5).timeout
 
-func _ask(text, choices) -> int:
-	_say(text, "")
+func ask(text, choices) -> int:
+	say(text, "")
 	_show_buttons(choices)
 	await choices_button_group.pressed
 	var pressed = choices_button_group.get_pressed_button()

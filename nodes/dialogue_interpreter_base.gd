@@ -4,8 +4,8 @@ extends Node
 
 class_name DialogueInterpreterBase
 
-func _say(name: String, text: String):
+func say(name: String, text: String):
 	pass
 
-func _ask(question: String, options: Array[String]) -> int:
+func ask(question: String, options: Array[String]) -> int:
 	return -1

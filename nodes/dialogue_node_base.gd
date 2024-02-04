@@ -2,7 +2,9 @@ extends Node
 
 class_name DialogueNodeBase
 
-@export var interpreter: DialogueInterpreterBase
+@export var _interpreter: DialogueInterpreterBase
+var interpreter:
+	get: return _get_interpreter()
 
 # start this block
 func start_dialogue():
@@ -11,11 +13,11 @@ func start_dialogue():
 # find the nearest dialogue interpreter on self or above the tree
 func _get_interpreter() -> DialogueInterpreterBase:
 	var parent = self
-	var _interpreter = parent.get("interpreter")
-	while(!_interpreter):
+	var result = parent.get("_interpreter")
+	while(!result):
 		parent = parent.get_parent()
 		if not parent:
 			printerr("No interpreter found.")
 			break
-		_interpreter = parent.get("interpreter")
-	return _interpreter
+		result = parent.get("_interpreter")
+	return result

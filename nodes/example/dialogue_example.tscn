@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dku6na48eos1k"]
 
 [ext_resource type="Script" path="res://nodes/example/dialogue_example.gd" id="1_fmh27"]
-[ext_resource type="Script" path="res://nodes/example/interpreter_example.gd" id="2_0ag0t"]
+[ext_resource type="Script" path="res://nodes/example/interpreter_ui.gd" id="2_0ag0t"]
 [ext_resource type="Script" path="res://nodes/example/interpreter_console.gd" id="2_sabvj"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_group.gd" id="3_058ay"]
 [ext_resource type="Script" path="res://nodes/blocks/dialogue_phrase.gd" id="4_7n7nw"]

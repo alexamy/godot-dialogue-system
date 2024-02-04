@@ -75,7 +75,9 @@ Used when executing `Phrase` dialogue node.
 Used when executing `Question` dialogue node.
 
 ## Example
-`example/dialogue_example.tscn`.
-There are `interpreter_console` for simple printing
-and `interpreter_example` for ui-based dialogue.
-Redefine (drag-and-drop) `interpreter` on `DialogueGroup` for changes.
+Scene: [`dialogue_example.tscn`](./example/dialogue_example.tscn).
+
+Example interpreters:
+- [`DialogueInterpreterConsole`](./example/interpreter_example.gd) for printing in a console
+
+- [`DialogueInterpreterUI`](./example/interpreter_ui.gd) for ui-based dialogue.

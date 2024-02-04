@@ -1,7 +1,5 @@
 # Godot dialogue system
 
 There are two flavours:
-- DSL-based
-- Node-based
-
-Look into specified directory.
+- [Node-based](./nodes/README.md)
+- [DSL-based](./dsl/README.md) (discontinued)

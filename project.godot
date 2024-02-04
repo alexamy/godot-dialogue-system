@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="DialogueSystem"
+config/tags=PackedStringArray("experiment")
 run/main_scene="res://nodes/example/dialogue_example.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

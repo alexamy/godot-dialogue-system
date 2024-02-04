@@ -26,19 +26,26 @@ Access node's **`Interpreter`** property. If property is not set in the editor, 
 
 Dialogue node with `name` and `text` multiline properties.
 
-When executed via `start_dialogue`, will run `ask` method of an interpreter, providing it's properties as arguments.
+When executed via `start_dialogue`, will run `say` method of an interpreter, providing it's properties as arguments.
 
 ![](./imgs/phrase_props.png)
 
 ## Question
+![](./imgs/question_node.png)
 
+Dialogue node with `question` and `options` properties.
 
-- Question
+When executed via `start_dialogue`, will run `ask` method of an interpreter, providing question text and text from it's options.
 
-Provides `question` and array of text `option` / NodePath `target`.
-After selecting some `option`, dialogue will continue from `target`.
+`ask` method must return index of choosen question option.
 
-- Custom node
+![](./imgs/question_props.png)
+
+`option` is a `DialogueQuestionOption` custom resource with `text` and `path` node path, used for alter dialogue execution path.
+
+![](./imgs/question_resource.png)
+
+## Custom node
 
 Just extend `DialogueNodeBase` and redefine `start_dialogue()`.
 If `start_dialogue` will return dialogue node, it will be executed with group, if nothing is returned, group executes only this node.

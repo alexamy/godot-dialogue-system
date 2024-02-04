@@ -22,17 +22,16 @@ Access node's **`Interpreter`** property. If property is not set in the editor, 
 ![](./imgs/node_interpreter.png)
 
 ### Phrase
+![](./imgs/phrase_node.png)
 
+Dialogue node with `name` and `text` multiline properties.
 
-Derived nodes:
+When executed via `start_dialogue`, will run `ask` method of an interpreter, providing it's properties as arguments.
 
-- Group
+![](./imgs/phrase_props.png)
 
-Groups and sequentially runs other nodes.
+## Question
 
-- Phrase
-
-Provides `name` and `text`.
 
 - Question
 

@@ -45,10 +45,14 @@ When executed via `start_dialogue`, will run `ask` method of an interpreter, pro
 
 ![](./imgs/question_resource.png)
 
-## Custom node
+## Group
+![](./imgs/group_node.png)
 
-Just extend `DialogueNodeBase` and redefine `start_dialogue()`.
-If `start_dialogue` will return dialogue node, it will be executed with group, if nothing is returned, group executes only this node.
+Dialogue node used for grouping other nodes.
+
+When executed via `start_dialogue`, will run `start_dialogue` of each of it's children sequentially.
+
+Children's `start_dialogue` can return node path of another dialogue node, and it's `start_dialogue` will be executed in a sequence as well. This behaviour provides a way to change a way of dialogue execution through question dialogue node, for example.
 
 ## Dialogue interpreter
 Base node: `DialogueInterpreterBase`.
